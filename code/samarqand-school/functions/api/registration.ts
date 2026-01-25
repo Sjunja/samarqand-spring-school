@@ -253,7 +253,7 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
     <hr />
     <p><strong>Оплата производится на расчетный счет Ассоциации психиатров Узбекистана.</strong></p>
     <p>Реквизиты (UZS):<br/>
-      ННО "O`ZBEKISTON PSIXIATRLARI ASSOTSIATSIYASI"<br/>
+      ННО "O'ZBEKISTON PSIXIATRLARI ASSOTSIATSIYASI"<br/>
       г. Ташкент, ул. Мехржон 35<br/>
       р/с 20212000205048580001<br/>
       ОПЕРУ ЧАКБ «DAVR BANK»<br/>
@@ -261,7 +261,7 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
       ИНН: 207293171
     </p>
     <p>Реквизиты (валюта):<br/>
-      ННО "O`ZBEKISTON PSIXIATRLARI ASSOTSIATSIYASI"<br/>
+      ННО "O'ZBEKISTON PSIXIATRLARI ASSOTSIATSIYASI"<br/>
       г. Ташкент, ул. Мехржон 35<br/>
       р/с вал: 20212840905048580001<br/>
       ОПЕРУ ЧАКБ «DAVR BANK»<br/>
