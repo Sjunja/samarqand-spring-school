@@ -1,0 +1,358 @@
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+
+export type Language = 'en' | 'ru' | 'uz';
+
+interface TranslationStrings {
+  [key: string]: string;
+}
+
+const translations: Record<Language, TranslationStrings> = {
+  en: {
+    // Navigation
+    'nav.home': 'Home',
+    'nav.about': 'About',
+    'nav.program': 'Program',
+    'nav.speakers': 'Speakers',
+    'nav.registration': 'Registration',
+    'nav.abstracts': 'Publications',
+    'nav.journal': 'Journal',
+    'nav.venue': 'Venue',
+    'nav.accommodation': 'Accommodation',
+    'nav.news': 'News',
+    'nav.contacts': 'Contacts',
+    
+    // Hero
+    'hero.title': 'III Samarqand Spring School',
+    'hero.subtitle': 'for Young Psychiatrists and Narcologists',
+    'hero.dates': 'April 8-12, 2026',
+    'hero.location': 'Samarkand, Uzbekistan',
+    'hero.register': 'Register Now',
+    'hero.submit': 'Submit Abstract',
+    
+    // Key Numbers
+    'stats.participants': 'Participants',
+    'stats.days': 'Days',
+    'stats.speakers': 'Speakers',
+    'stats.languages': 'Languages',
+    
+    // Dates
+    'dates.title': 'Important Dates',
+    'dates.abstract': 'Abstract Deadline',
+    'dates.registration': 'Registration Deadline',
+    'dates.event': 'Event Dates',
+    
+    // About
+    'about.title': 'About the School',
+    'about.description': 'The third Samarqand Spring School for young psychiatrists and narcologists is organized as part of the scientific and educational project of the Psychiatric Association of Uzbekistan.',
+    'about.audience': 'Target Audience',
+    'about.audience.desc': 'Young psychiatrists, psychotherapists, and narcologists under 40 years of age with at least one year of work experience. Knowledge of English is welcome.',
+    
+    // Organizers
+    'organizers.title': 'Organizers',
+    'org.0': 'Ministry of Health of the Republic of Uzbekistan',
+    'org.1': 'Republican Specialized Scientific-Practical Medical Center for Mental Health',
+    'org.2': 'Tashkent State Medical University',
+    'org.3': 'Samarkand State Medical University',
+    'org.4': 'World Psychiatric Association',
+    'org.5': 'Psychiatric Association of Uzbekistan',
+    
+    // Registration
+    'reg.title': 'Participant Registration',
+    'reg.notice': 'Limited to 50 in-person and 50 online participants. First come, first served.',
+    'reg.deadline': 'Registration Deadline: March 1, 2026',
+    'reg.free': 'Participation is paid according to the approved price list. 10% discount for participants who have paid membership fees for 2026.',
+    'reg.requirements': 'Requirements',
+    'reg.req.1': 'Age under 40 years',
+    'reg.req.2': 'At least 1 year of work experience',
+    'reg.req.3': 'For 10% discount: provide proof of membership fee payment for 2026',
+    'reg.req.4': 'English knowledge is welcome',
+    'reg.slots': 'Available Slots',
+    'reg.closed': 'Registration is closed',
+    'reg.receipts': 'Send payment confirmation to: uzpa.org@gmail.com',
+    'reg.journal': 'Materials will be published in the "Interdisciplinary Journal of Psychiatry and Addictology"',
+    
+    // Form
+    'form.name': 'Full Name',
+    'form.email': 'Email',
+    'form.phone': 'Phone',
+    'form.organization': 'Organization',
+    'form.specialty': 'Specialty',
+    'form.membership': 'Membership Years (2020-2026)',
+    'form.submit': 'Submit Registration',
+    'form.success': 'Registration submitted successfully!',
+    'form.error': 'Error submitting registration',
+    
+    // Abstract
+    'abstract.title': 'Publication Submission',
+    'abstract.deadline': 'Deadline: March 1, 2026',
+    'abstract.format': 'Formatting Requirements',
+    'abstract.structure': 'Publication Structure',
+    'abstract.email': 'Submit to: uzpa.org@gmail.com',
+    'abstract.subject': 'Subject: "Author Name - Samarqand School - 2026"',
+    
+    // Venue
+    'venue.title': 'Venue',
+    'venue.university': 'Samarkand State Medical University',
+    'venue.opening': 'Opening Ceremony: Grand Hall, Ankabay St. 6',
+    'venue.sessions': 'Sessions: Amir Temur St. 18',
+    'venue.about': 'About Samarkand',
+    'venue.about.desc': 'Samarkand is one of the oldest cities in Central Asia, a UNESCO World Heritage site famous for the Registan Square and its rich Islamic architecture.',
+    
+    // News
+    'news.title': 'News & Announcements',
+    'news.empty': 'No news yet. Check back soon!',
+    
+    // Contacts
+    'contacts.title': 'Contact Us',
+    'contacts.email': 'Email',
+    'contacts.telegram': 'Telegram',
+    'contacts.committee': 'Organizing Committee',
+    'contacts.telegram.rosa': '@RoseUserbayeva',
+    'contacts.telegram.inara': '@inarakhayredinova',
+    'contacts.telegram.botir': '@vosikov',
+    
+    // Footer
+    'footer.rights': 'All rights reserved',
+    'footer.ministry': 'Ministry of Health of the Republic of Uzbekistan',
+    'footer.organizers': 'Organizers',
+  },
+  ru: {
+    // Navigation
+    'nav.home': 'Главная',
+    'nav.about': 'О школе',
+    'nav.program': 'Программа',
+    'nav.speakers': 'Спикеры',
+    'nav.registration': 'Регистрация',
+    'nav.abstracts': 'Публикации',
+    'nav.journal': 'Журнал',
+    'nav.venue': 'Место',
+    'nav.accommodation': 'Проживание',
+    'nav.news': 'Новости',
+    'nav.contacts': 'Контакты',
+    
+    // Hero
+    'hero.title': 'III Самаркандская весенняя школа',
+    'hero.subtitle': 'молодых психиатров и наркологов',
+    'hero.dates': '8-12 апреля 2026',
+    'hero.location': 'Самарканд, Узбекистан',
+    'hero.register': 'Регистрация',
+    'hero.submit': 'Подать тезисы',
+    
+    // Key Numbers
+    'stats.participants': 'Участников',
+    'stats.days': 'Дней',
+    'stats.speakers': 'Спикеров',
+    'stats.languages': 'Языка',
+    
+    // Dates
+    'dates.title': 'Важные даты',
+    'dates.abstract': 'Дедлайн тезисов',
+    'dates.registration': 'Дедлайн регистрации',
+    'dates.event': 'Даты мероприятия',
+    
+    // About
+    'about.title': 'О школе',
+    'about.description': 'Третья Самаркандская весенняя школа молодых психиатров и наркологов проводится в рамках научно-образовательного проекта Ассоциации психиатров Узбекистана.',
+    'about.audience': 'Целевая аудитория',
+    'about.audience.desc': 'Молодые специалисты психиатры, психотерапевты и наркологи в возрасте до 40 лет с опытом работы не менее одного года. Знание английского языка приветствуется.',
+    
+    // Organizers
+    'organizers.title': 'Организаторы',
+    'org.0': 'Министерство здравоохранения Республики Узбекистан',
+    'org.1': 'Республиканский специализированный научно-практический медицинский центр психического здоровья',
+    'org.2': 'Ташкентский государственный медицинский университет',
+    'org.3': 'Самаркандский государственный медицинский университет',
+    'org.4': 'Всемирная психиатрическая ассоциация',
+    'org.5': 'Ассоциация психиатров Узбекистана',
+    
+    // Registration
+    'reg.title': 'Регистрация участников',
+    'reg.notice': 'Количество мест ограничено - 50 очно и 50 онлайн участников. Первый пришел - первый обслужен.',
+    'reg.deadline': 'Дедлайн регистрации: 1 марта 2026',
+    'reg.free': 'Участие платное согласно утвержденному прайсу. Скидка 10% для участников, оплативших членские взносы за 2026 год.',
+    'reg.requirements': 'Требования',
+    'reg.req.1': 'Возраст до 40 лет',
+    'reg.req.2': 'Опыт работы не менее 1 года',
+    'reg.req.3': 'Для скидки 10%: предоставить подтверждение оплаты членского взноса за 2026 год',
+    'reg.req.4': 'Знание английского приветствуется',
+    'reg.slots': 'Свободных мест',
+    'reg.closed': 'Регистрация закрыта',
+    'reg.receipts': 'Отправить подтверждение оплаты на: uzpa.org@gmail.com',
+    'reg.journal': 'Материалы будут опубликованы в "Междисциплинарном журнале психиатрии и аддиктологии"',
+    
+    // Form
+    'form.name': 'ФИО',
+    'form.email': 'Email',
+    'form.phone': 'Телефон',
+    'form.organization': 'Организация',
+    'form.specialty': 'Специальность',
+    'form.membership': 'Годы членства (2020-2026)',
+    'form.submit': 'Отправить заявку',
+    'form.success': 'Заявка успешно отправлена!',
+    'form.error': 'Ошибка при отправке заявки',
+    
+    // Abstract
+    'abstract.title': 'Подача публикаций',
+    'abstract.deadline': 'Дедлайн: 1 марта 2026',
+    'abstract.format': 'Требования к оформлению',
+    'abstract.structure': 'Структура публикации',
+    'abstract.email': 'Отправить на: uzpa.org@gmail.com',
+    'abstract.subject': 'Тема письма: "ФИО автора - Самаркандская школа - 2026"',
+    
+    // Venue
+    'venue.title': 'Место проведения',
+    'venue.university': 'Самаркандский государственный медицинский университет',
+    'venue.opening': 'Торжественное открытие: Большой зал, ул. Анкабай, 6',
+    'venue.sessions': 'Секционные заседания: ул. Амира Темура, 18',
+    'venue.about': 'О Самарканде',
+    'venue.about.desc': 'Самарканд - один из древнейших городов Центральной Азии, объект Всемирного наследия ЮНЕСКО, известный площадью Регистан и богатой исламской архитектурой.',
+    
+    // News
+    'news.title': 'Новости и объявления',
+    'news.empty': 'Новостей пока нет. Следите за обновлениями!',
+    
+    // Contacts
+    'contacts.title': 'Контакты',
+    'contacts.email': 'Email',
+    'contacts.telegram': 'Telegram',
+    'contacts.committee': 'Организационный комитет',
+    'contacts.telegram.rosa': '@RoseUserbayeva (Усербаева Роза Куралбаевна)',
+    'contacts.telegram.inara': '@inarakhayredinova (Хайрединова Инара Ильгизовна)',
+    'contacts.telegram.botir': '@vosikov (Восиков Ботирбек Абдулазиз угли)',
+    
+    // Footer
+    'footer.rights': 'Все права защищены',
+    'footer.ministry': 'Министерство здравоохранения Республики Узбекистан',
+    'footer.organizers': 'Организаторы',
+  },
+  uz: {
+    // Navigatsiya
+    'nav.home': 'Bosh sahifa',
+    'nav.about': 'Maktab haqida',
+    'nav.program': 'Dastur',
+    'nav.speakers': 'Ma'ruzachilar',
+    'nav.registration': 'Ro'yxatdan o'tish',    'nav.abstracts': 'Nashrlar',
+    'nav.journal': 'Jurnal',
+    'nav.venue': 'Joy',
+    'nav.accommodation': 'Turar joy',
+    'nav.news': 'Yangiliklar',
+    'nav.contacts': 'Aloqalar',
+    
+    // Qahramon    'hero.title': 'III Samarqand bahor maktabi',
+    'hero.subtitle': 'yosh psixiatrlar va narkologlar uchun',
+    'hero.dates': '2026 yil 8-12 aprel',
+    'hero.location': 'Samarqand, O'zbekiston',    'hero.register': 'Ro'yxatdan o'tish',
+    'hero.submit': 'Annotatsiyalarni topshirish',
+    
+    // Asosiy raqamlar
+    'stats.participants': 'Ishtirokchilar',
+    'stats.days': 'Kunlar',
+    'stats.speakers': 'Ma'ruzachilar',    'stats.languages': 'Tillar',
+    
+    // Sana
+    'dates.title': 'Muhim sanalar',
+    'dates.abstract': 'Annotatsiya topshirish muddati',
+    'dates.registration': 'Ro'yxatdan o'tish muddati',
+    'dates.event': 'Tadbir sanalari',
+    
+    // Haqida    'about.title': 'Maktab haqida',
+    'about.description': 'Uchinchi Samarqand bahorgi yosh psixiatrlar va narkologlar maktabi O'zbekiston psixiatrlari assotsiatsiyasining ilmiy va ta'limiy loyihasi doirasida o'tkaziladi.',
+    'about.audience': 'Maqsadli auditoriya',    'about.audience.desc': '40 yoshgacha bo'lgan, kamida bir yillik ish stajiga ega yosh mutaxassislar, psixiatrlar, psixoterapevtlar va narkologlar. Ingliz tilini bilish afzallik hisoblanadi.',
+    
+    // Tashkilotchilar
+    'organizers.title': 'Tashkilotchilar',
+    'org.0': 'O'zbekiston Respublikasi Sog'liqni Saqlash Vazirligi',
+    'org.1': 'Ruhiy salomatlik bo'yicha Respublika ixtisoslashgan ilmiy-amaliy tibbiyot markazi',
+    'org.2': 'Toshkent Davlat Tibbiyot Universiteti',
+    'org.3': 'Samarqand Davlat Tibbiyot Universiteti',
+    'org.4': 'Jahon psixiatriya assotsiatsiyasi',
+    'org.5': 'O'zbekiston psixiatrlari assotsiatsiyasi',
+    
+    // Ro'yxatdan o'tish
+    'reg.title': 'Ishtirokchilarni ro'yxatdan o'tkazish',
+    'reg.notice': 'Joylar soni 50 nafar bevosita va 50 nafar onlayn ishtirokchi bilan cheklangan. Kim avval keladi, avval xizmat oladi.',
+    'reg.deadline': 'Ro'yxatdan o'tish muddati: 2026 yil 1 mart',
+    'reg.free': 'Ishtirok etish tasdiqlangan narxlar ro'yxatiga muvofiq to'lovni o'z ichiga oladi. 2026 yil uchun a'zolik badallarini to'lagan ishtirokchilarga 10% chegirma taqdim etiladi.',    'reg.requirements': 'Talablar',
+    'reg.req.1': 'Yoshi 40 gacha',
+    'reg.req.2': 'Kamida 1 yil ish staji',
+    'reg.req.3': '10% chegirma uchun: 2026 yil a'zolik to'lovini to'laganlikni tasdiqlovchi hujjatni taqdim eting',    'reg.req.4': 'Ingliz tilini bilish afzallik hisoblanadi',
+    'reg.slots': 'Bo'sh joylar',
+    'reg.closed': 'Ro'yxatdan o'tish yopildi',
+    'reg.receipts': 'To'lov dalilini quyidagi manzilga yuboring: uzpa.org@gmail.com',    'reg.journal': 'Materiallar Interdisciplinary Journal of Psychiatry and Addiction jurnalida chop etiladi',
+    
+    // Forma
+    'form.name': 'To'liq ism',
+    'form.email': 'Email',
+    'form.phone': 'Telefon',    'form.organisation': 'Tashkilot',
+    'form.specialty': 'Ixtisoslik',
+    'form.membership': 'A'zolik yillari (2020-2026)',
+    'form.submit': 'Arizani topshirish',
+    'form.success': 'Ariza muvaffaqiyatli topshirildi!',    'form.error': 'Arizani yuborishda xato',
+    
+    // Abstrakt
+    'abstract.title': 'Nashrlarni topshirish',
+    'abstract.deadline': 'Muddat: 2026-yil 1-mart',
+    'abstract.format': 'Formatlash talablari',    'abstract.structure': 'Nashr tuzilmasi',
+    'abstract.email': 'Yuborish manzili: uzpa.org@gmail.com',
+    'abstract.subject': 'Email mavzusi: "Muallifning to'liq ismi - Samarqand maktabi - 2026"',
+    
+    // Joy    'venue.title': 'Joy',
+    'venue.university': 'Samarkand Davlat Tibbiyot Universiteti',
+    'venue.opening': 'Katta ochilish: Katta zal, 6 Ankaba ko'chasi',
+    'venue.sessions': 'Bo'lim yig'ilishlari: 18 Amir Temur ko'chasi',    'venue.about': 'Samarkand haqida',
+    'venue.about.desc': 'Samarkand Markaziy Osiyodagi eng qadimgi shaharlaridan biri, UNESCO Jahon madaniy merosi ro'yxatiga kiritilgan, Registon maydoni va boy islomiy me'morchiligi bilan mashhur.',
+    
+    // Yangiliklar    'news.title': 'Yangiliklar va e'lonlar',
+    'news.empty': 'Hali yangiliklar yo'q. Yangilanishlar uchun kuzatib boring!',
+    
+    // Aloqa ma'lumotlari
+    'contacts.title': 'Aloqa ma'lumotlari',
+    'contacts.email': 'Email',
+    'contacts.telegram': 'Telegram',    'contacts.committee': 'Tashkiliy qo'mita',
+    'contacts.telegram.rosa': '@RoseUserbayeva (Userbayeva Roza Kuralbaevna)',
+    'contacts.telegram.inara': '@inarakhayredinova (Khayredinova Inara Ilgizovna)',    'contacts.telegram.botir': '@vosikov (Vosikov Botirbek Abdulaziz ugli)',
+    
+    // Pastki qism    'footer.rights': 'Barcha huquqlar himoyalangan',
+    'footer.ministry': 'O'zbekiston Respublikasi Sog'liqni Saqlash Vazirligi',
+    'footer.organizers': 'Tashkilotchilar',
+  },
+};
+
+interface I18nContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+}
+
+const I18nContext = createContext<I18nContextType | null>(null);
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>('ru');
+
+  const t = (key: string): string => {
+    return translations[language][key] || key;
+  };
+
+  return (
+    <I18nContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </I18nContext.Provider>
+  );
+}
+
+export function useI18n() {
+  const context = useContext(I18nContext);
+  if (!context) {
+    throw new Error('useI18n must be used within I18nProvider');
+  }
+  return context;
+}
+
+export function getLogoPath(language: Language): string {
+  const logos: Record<Language, string> = {
+    en: '/images/Лого анг.png',
+    ru: '/images/Лого рус.png',
+    uz: '/images/Лого узб.png',
+  };
+  return logos[language];
+}

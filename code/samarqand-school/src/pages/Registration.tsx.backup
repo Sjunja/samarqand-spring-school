@@ -1,0 +1,337 @@
+import { useState, useEffect } from 'react';
+import { useI18n } from '../lib/i18n';
+import { submitRegistration, getRegistrationCount, isBackendConfigured } from '../lib/backend';
+import { AlertCircle, CheckCircle, Users, Clock, Check, ExternalLink } from 'lucide-react';
+
+const MAX_PARTICIPANTS = 100; // 50 очно + 50 онлайн
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfxA3CvmD9LRW1xp6axVM-q7vCMnTDEWOFLyuJVbJbmbGrieA/viewform?usp=sf_link';
+
+export default function Registration() {
+  const { language, t } = useI18n();
+  const [slots, setSlots] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+  const [dbAvailable, setDbAvailable] = useState(true);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    organization: '',
+    specialty: '',
+    membership_years: '',
+  });
+
+  useEffect(() => {
+    // Show all 80 slots available since we use Google Forms
+    setDbAvailable(false);
+    setSlots(MAX_PARTICIPANTS);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!isBackendConfigured || !dbAvailable) {
+      // Redirect to Google Forms
+      window.open(GOOGLE_FORM_URL, '_blank');
+      return;
+    }
+    
+    setLoading(true);
+    setError('');
+
+    const result = await submitRegistration(formData);
+    
+    if (result.success) {
+      setSuccess(true);
+      setFormData({ name: '', email: '', phone: '', organization: '', specialty: '', membership_years: '' });
+      if (slots !== null) setSlots(slots - 1);
+    } else {
+      if (result.error === 'Database not configured' || result.error === 'Connection error') {
+        setDbAvailable(false);
+        window.open(GOOGLE_FORM_URL, '_blank');
+      } else {
+        setError(result.error || t('form.error'));
+      }
+    }
+    
+    setLoading(false);
+  };
+
+  const requirements = [
+    t('reg.req.1'),
+    t('reg.req.2'),
+    t('reg.req.3'),
+    t('reg.req.4'),
+  ];
+
+  const isClosed = slots !== null && slots <= 0;
+
+  return (
+    <main className="pt-20 lg:pt-24">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-primary-500 to-primary-600 py-16 lg:py-20">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl lg:text-title font-bold text-white mb-4">{t('reg.title')}</h1>
+          <p className="text-xl text-white/90">{t('reg.deadline')}</p>
+        </div>
+      </section>
+
+      <section className="py-12 lg:py-20">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Left: Info */}
+            <div className="lg:col-span-1 space-y-6">
+              {/* Slots Counter */}
+              <div className="bg-primary-50 border border-primary-200 rounded-md p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Users className="w-6 h-6 text-primary-500" />
+                  <span className="font-semibold text-neutral-900">{t('reg.slots')}</span>
+                </div>
+                <div className={`text-4xl font-bold ${isClosed ? 'text-error' : 'text-primary-500'}`}>
+                  {slots !== null ? (isClosed ? t('reg.closed') : `${slots} / 100`) : '100 / 100'}
+                </div>
+              </div>
+
+              {/* Notice */}
+              <div className="bg-warning/10 border border-warning/30 rounded-md p-4 flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-warning flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-neutral-700">{t('reg.notice')}</p>
+              </div>
+
+              {/* Registration Fees 2026 */}
+              <div className="bg-secondary-50 border border-secondary-200 rounded-md p-6">
+                <h3 className="font-semibold text-neutral-900 mb-3">
+                  {language === 'ru' ? 'Регистрационные взносы 2026' : language === 'uz' ? '2026 yil roʻyxatdan oʻtish badallari' : 'Registration Fees 2026'}
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-neutral-700">
+                      {language === 'ru' ? 'Очное участие' : language === 'uz' ? 'Shaxsan ishtirok' : 'In-person participation'}
+                    </span>
+                    <span className="font-semibold text-primary-500">500 000 UZS</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-neutral-700">
+                      {language === 'ru' ? 'Онлайн участие' : language === 'uz' ? 'Onlayn ishtirok' : 'Online participation'}
+                    </span>
+                    <span className="font-semibold text-primary-500">300 000 UZS</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-neutral-700">
+                      {language === 'ru' ? 'Членский взнос АПУ за 2026 год' : language === 'uz' ? '2026 yil APU aʼzolik badali' : 'APU membership fee for 2026'}
+                    </span>
+                    <span className="font-semibold text-primary-500">200 000 UZS</span>
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-secondary-200">
+                  <p className="text-sm text-neutral-700">
+                    {language === 'ru' 
+                      ? 'Скидка 10% предоставляется участникам, оплатившим членский взнос Ассоциации психиатров Узбекистана за 2026 год.'
+                      : language === 'uz'
+                      ? '10% chegirma Oʻzbekiston Psixiatrlar Assotsiatsiyasining 2026 yil uchun aʼzolik badalini toʻlagan ishtirokchilarga beriladi.'
+                      : '10% discount is provided to participants who have paid the membership fee of the Psychiatric Association of Uzbekistan for 2026.'}
+                  </p>
+                </div>
+              </div>
+
+              {/* Payment Confirmation */}
+              <div className="bg-warning/10 border border-warning/30 rounded-md p-4">
+                <p className="text-sm text-neutral-700 font-medium mb-1">{t('reg.receipts')}</p>
+                <p className="text-xs text-neutral-600">
+                  {language === 'ru' 
+                    ? 'Для получения скидки 10% предоставьте подтверждение оплаты членского взноса за 2026 год. Можно загрузить через форму на сайте.'
+                    : language === 'uz'
+                    ? '10% chegirma olish uchun 2026 yil uchun aʼzolik badali toʻlovini tasdiqlovchi hujjatni taqdim eting. Sayt orqali yuklash mumkin.'
+                    : 'To receive a 10% discount, provide proof of payment of membership fee for 2026. Can be uploaded through the website form.'}
+                </p>
+              </div>
+
+              {/* Journal Publication */}
+              <div className="bg-info/10 border border-info/30 rounded-md p-4">
+                <p className="text-sm text-neutral-700 font-medium mb-1">{t('reg.journal')}</p>
+                <p className="text-xs text-neutral-600">
+                  {language === 'ru' 
+                    ? 'Материалы конференции будут опубликованы в научно-практическом журнале'
+                    : language === 'uz'
+                    ? 'Konferensiya materiallari ilmiy-amaliy jurnalda nashr etiladi'
+                    : 'Conference materials will be published in the scientific-practical journal'}
+                </p>
+              </div>
+
+              {/* Accommodation Info */}
+              <div className="bg-warning/10 border border-warning/30 rounded-md p-4">
+                <p className="text-sm text-neutral-700 font-medium mb-1">
+                  {language === 'ru' ? 'Проживание' : language === 'uz' ? 'Turar joy' : 'Accommodation'}
+                </p>
+                <p className="text-xs text-neutral-600">
+                  {language === 'ru' 
+                    ? 'Оргкомитет не участвует в организации размещения. Список рекомендованных отелей будет опубликован на сайте.'
+                    : language === 'uz'
+                    ? 'Tashkiliy qoʻmita turar joy tashkil etishda ishtirok etmaydi. Tavsiya etilgan mehmonxonalar roʻyxati saytda eʼlon qilinadi.'
+                    : 'Organizing committee does not participate in accommodation arrangements. List of recommended hotels will be published on the website.'}
+                </p>
+              </div>
+
+              {/* Requirements */}
+              <div className="bg-white border border-neutral-200 rounded-md p-6">
+                <h3 className="font-semibold text-neutral-900 mb-4">{t('reg.requirements')}</h3>
+                <ul className="space-y-3">
+                  {requirements.map((req, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-neutral-700">
+                      <Check className="w-4 h-4 text-secondary-500 flex-shrink-0 mt-0.5" />
+                      {req}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Deadline */}
+              <div className="bg-neutral-100 rounded-md p-4 flex items-center gap-3">
+                <Clock className="w-5 h-5 text-neutral-500" />
+                <span className="text-sm font-medium text-neutral-700">{t('reg.deadline')}</span>
+              </div>
+
+              {/* Google Forms Alternative */}
+              <a
+                href={GOOGLE_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 bg-info/10 border border-info/30 rounded-md hover:bg-info/20 transition-colors"
+              >
+                <div className="flex items-center gap-2 text-info font-medium mb-1">
+                  <ExternalLink className="w-4 h-4" />
+                  Google Forms
+                </div>
+                <p className="text-sm text-neutral-600">
+                  {language === 'ru' 
+                    ? 'Альтернативная регистрация через Google Forms' 
+                    : language === 'uz'
+                    ? 'Google Forms orqali muqobil roʻyxatdan oʻtish'
+                    : 'Alternative registration via Google Forms'}
+                </p>
+              </a>
+            </div>
+
+            {/* Right: Form */}
+            <div className="lg:col-span-2">
+              {success ? (
+                <div className="bg-secondary-50 border border-secondary-200 rounded-md p-8 text-center">
+                  <CheckCircle className="w-16 h-16 text-secondary-500 mx-auto mb-4" />
+                  <h2 className="text-2xl font-bold text-neutral-900 mb-2">{t('form.success')}</h2>
+                  <p className="text-neutral-700">
+                    {language === 'ru' 
+                      ? 'Мы отправим вам подтверждение на email.' 
+                      : language === 'uz'
+                      ? 'Biz sizga emailga tasdiqlash yuboramiz.'
+                      : 'We will send you a confirmation email.'}
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="bg-white border border-neutral-200 rounded-md p-6 lg:p-8">
+                  {error && (
+                    <div className="mb-6 p-4 bg-error/10 border border-error/30 rounded-md flex items-center gap-3 text-error">
+                      <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                      {error}
+                    </div>
+                  )}
+
+                  {!dbAvailable && (
+                    <div className="mb-6 p-4 bg-info/10 border border-info/30 rounded-md">
+                      <p className="text-sm text-neutral-700">
+                        {language === 'ru' 
+                          ? 'Форма перенаправит вас на Google Forms для завершения регистрации.' 
+                          : language === 'uz'
+                          ? 'Shakl sizni roʻyxatdan oʻtishni yakunlash uchun Google Formsga yoʻnaltiradi.'
+                          : 'Form will redirect you to Google Forms to complete registration.'}
+                      </p>
+                    </div>
+                  )}
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-neutral-700 mb-2">{t('form.name')} *</label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full h-12 px-4 border border-neutral-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        disabled={isClosed}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-neutral-700 mb-2">{t('form.email')} *</label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full h-12 px-4 border border-neutral-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        disabled={isClosed}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-neutral-700 mb-2">{t('form.phone')}</label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full h-12 px-4 border border-neutral-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        disabled={isClosed}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-neutral-700 mb-2">{t('form.organization')}</label>
+                      <input
+                        type="text"
+                        value={formData.organization}
+                        onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                        className="w-full h-12 px-4 border border-neutral-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        disabled={isClosed}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-neutral-700 mb-2">{t('form.specialty')}</label>
+                      <input
+                        type="text"
+                        value={formData.specialty}
+                        onChange={(e) => setFormData({ ...formData, specialty: e.target.value })}
+                        className="w-full h-12 px-4 border border-neutral-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        disabled={isClosed}
+                      />
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-neutral-700 mb-2">{t('form.membership')}</label>
+                      <input
+                        type="text"
+                        value={formData.membership_years}
+                        onChange={(e) => setFormData({ ...formData, membership_years: e.target.value })}
+                        placeholder="2020, 2021, 2022, 2023, 2024, 2025, 2026"
+                        className="w-full h-12 px-4 border border-neutral-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                        disabled={isClosed}
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loading || isClosed}
+                    className="mt-8 w-full h-14 bg-primary-500 hover:bg-primary-600 disabled:bg-neutral-300 text-white font-semibold rounded-sm transition-colors duration-200 flex items-center justify-center gap-2"
+                  >
+                    {loading ? '...' : (
+                      <>
+                        {t('form.submit')}
+                        {!dbAvailable && <ExternalLink className="w-4 h-4" />}
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

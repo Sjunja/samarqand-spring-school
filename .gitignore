@@ -1,0 +1,79 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+dist/
+build/
+
+# Misc
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Build artifacts
+*.tsbuildinfo
+
+# Deployment packages
+deployment-package/
+*.zip
+
+# Browser screenshots
+.browser_screenshots/
+
+# Claude & Continue
+.claude/
+.continue/
+
+# Audio files
+*.ogg
+
+# Office documents (originals)
+*.docx
+
+# Logs and temp markdown files
+ОБНОВЛЕНИЕ_*.md
+ОТЧЕТ_*.md
+ПЛАН_*.md
+СТАТУС_*.md
+NEW_*.txt
+КРАТКАЯ_*.md
+РЕШЕНИЕ_*.md
+ИНСТРУКЦИЯ_*.txt
+
+# Build scripts
+*.bat
+
+# User input files (if needed to exclude)
+user_input_files/

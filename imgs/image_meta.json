@@ -1,0 +1,496 @@
+[
+  {
+    "query": "Elegant, sophisticated medical conference website with premium feel, refined typography, subtle luxury aesthetic, professional medical event",
+    "image_info": {
+      "url": "https://www.elegantthemes.com/blog/wp-content/uploads/2023/02/divi-health-center-layout-pack-featured-image.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 107178,
+      "width": 1946,
+      "height": 1096,
+      "total_pixels": 2132816,
+      "basic_score": 0.7007661757492726,
+      "file_name": "elegant-premium-medical-website-design-mockup.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 85.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 90.0,
+      "explanation": "The image perfectly captures the 'elegant,' 'sophisticated,' and 'premium' aesthetic requested through its use of a dark emerald and cream color palette and refined serif typography. While the text indicates a 'Health Clinic' rather than a 'Conference,' the layout and design style are directly applicable and highly relevant to a professional medical event context.",
+      "file_name": "elegant-premium-medical-website-design-mockup.jpg",
+      "caption": "A sophisticated web design mockup for 'Divi Health Clinic' featuring a premium dark green and cream color scheme, elegant serif typography, medical imagery, and golden line-art illustrations across desktop and mobile views.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Clean, professional medical conference website homepage with purple and green accent colors, minimalist design, generous white space, modern typography",
+    "image_info": {
+      "url": "https://cdn.dribbble.com/userupload/12360563/file/still-83e1ab31efcb358beda0537839ff1d5b.png?format=webp&resize=1440x&vertical=center",
+      "img_format": "WEBP",
+      "mode": "RGB",
+      "file_size": 107268,
+      "width": 1440,
+      "height": 1080,
+      "total_pixels": 1555200,
+      "basic_score": 0.8735220911415227,
+      "file_name": "modern-purple-green-dental-website-ui-design.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 75.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 90.0,
+      "explanation": "The image features an excellent modern, minimalist design with the exact purple and green color scheme requested. The typography and layout are clean and professional. However, the actual content is designed for a dental clinic (booking appointments, services like braces) rather than a medical conference, meaning the text and structure would need adaptation to fit the specific 'conference' aspect of the query.",
+      "file_name": "modern-purple-green-dental-website-ui-design.jpg",
+      "caption": "A display of a modern web design layout for a medical dental practice, utilizing a vibrant deep purple and mint green color palette with sections for services, team members, and testimonials.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Swiss design style conference website with strong grid layout, Helvetica typography, minimal colors, clean structured layout for scientific content",
+    "image_info": {
+      "url": "https://cdn.myportfolio.com/7d4fc04f3d0df0562f817e29241997f3/e934ae76-3345-4caa-ae09-fcaeea30d9d4_rw_1920.png?h=6f97837dec4e2674cc66d5c6d86112cf",
+      "img_format": "PNG",
+      "mode": "RGBA",
+      "file_size": 214640,
+      "width": 1920,
+      "height": 1391,
+      "total_pixels": 2670720,
+      "basic_score": 0.5754196174998625,
+      "file_name": "swiss-style-grid-system-layout-demonstration.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 70.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 80.0,
+      "explanation": "The image perfectly illustrates 'Swiss design' and 'grid layout' by showing a side-by-side comparison of the design and its underlying grid structure. However, the content is a print poster (A0 size) explaining design theory rather than a mockup of a medical conference website, and the subject matter is design itself, not medicine.",
+      "file_name": "swiss-style-grid-system-layout-demonstration.jpg",
+      "caption": "A diptych graphic demonstrating Swiss Style graphic design principles. The left panel shows a clean, typographic layout with the title 'Swiss Style' in Helvetica, while the right panel overlays the underlying modular grid structure in red lines to reveal the alignment logic.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Swiss design style conference website with strong grid layout, Helvetica typography, minimal colors, clean structured layout for scientific content",
+    "image_info": {
+      "url": "https://cdn.myportfolio.com/7d4fc04f3d0df0562f817e29241997f3/d9c3af88-a35f-40f0-85ee-bf93e1df0176_rw_1920.png?h=23876cb1a533de07dcbc5ac7b1bd6ffb",
+      "img_format": "PNG",
+      "mode": "RGBA",
+      "file_size": 302976,
+      "width": 1920,
+      "height": 1391,
+      "total_pixels": 2670720,
+      "basic_score": 0.5817214114338819,
+      "file_name": "swiss_style_grid_layout_poster_black_white.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 65.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 80.0,
+      "explanation": "The image excellently demonstrates Swiss Design principles, Helvetica typography, and grid systems, showing a side-by-side comparison of the layout and its underlying grid. However, it depicts a print poster format (referencing 'A0 Format') rather than a website interface, and the content is design-focused rather than medical.",
+      "file_name": "swiss_style_grid_layout_poster_black_white.jpg",
+      "caption": "A didactic graphic design poster displaying 'Swiss Style' typography in white on a black background, placed next to a version revealing the underlying red modular grid structure.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Swiss design style conference website with strong grid layout, Helvetica typography, minimal colors, clean structured layout for scientific content",
+    "image_info": {
+      "url": "https://cdn.myportfolio.com/7d4fc04f3d0df0562f817e29241997f3/075fbfac-22d3-4e22-a4dc-c1f22d5cebe7_rw_1920.png?h=f9cfb220b8c0fdffe13afbe9ceed5933",
+      "img_format": "PNG",
+      "mode": "RGBA",
+      "file_size": 275655,
+      "width": 1920,
+      "height": 1391,
+      "total_pixels": 2670720,
+      "basic_score": 0.579870403051571,
+      "file_name": "swiss-design-grid-system-layout-example.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 70.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 80.0,
+      "explanation": "The image excellently demonstrates 'Swiss design' and 'grid layout' principles with high clarity, showing the underlying structure demanded by the prompt. However, it loses relevance points because it is explicitly a print layout (ISO 216 A0 poster dimensions) rather than a 'website,' and the text content is about design theory rather than 'medical' or 'scientific' topics.",
+      "file_name": "swiss-design-grid-system-layout-example.jpg",
+      "caption": "A side-by-side comparison of a Swiss Style typographic layout and its structural grid. The left panel shows the clean, minimalist composition using Helvetica typography, while the right panel reveals the red grid lines, margins, and gutters for an ISO 216 A0 format.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "beautiful Samarkand Registan Square historic Islamic architecture",
+    "image_info": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Registan_square_Samarkand.jpg/1200px-Registan_square_Samarkand.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 268059,
+      "width": 1200,
+      "height": 809,
+      "total_pixels": 970800,
+      "basic_score": 0.9485637555852431,
+      "file_name": "samarkand-registan-square-historic-architecture.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 95.0,
+      "explanation": "The image perfectly matches the search query and prompt, depicting the Registan Square with exceptional clarity and beautiful lighting. The architectural details are sharp, the composition is symmetrical and professional, and there are no visible watermarks.",
+      "file_name": "samarkand-registan-square-historic-architecture.jpg",
+      "caption": "A wide-angle view of the historic Registan Square in Samarkand, Uzbekistan, bathed in golden sunlight, featuring the intricate Islamic architecture of the Ulugh Beg, Tilya-Kori, and Sher-Dor Madrasahs with their iconic blue domes and towering minarets.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "beautiful Samarkand Registan Square historic Islamic architecture",
+    "image_info": {
+      "url": "https://res.cloudinary.com/odysseytraveller/image/fetch/f_auto,q_auto,dpr_auto,r_4,w_1520,h_700,c_fill/https://cdn.odysseytraveller.com/app/uploads/2019/07/registan-square-samarkand.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 150894,
+      "width": 1520,
+      "height": 700,
+      "total_pixels": 1064000,
+      "basic_score": 0.9043907116302392,
+      "file_name": "registan-square-samarkand-historic-architecture.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 90.0,
+      "watermark_score": 100.0,
+      "overall_score": 95.0,
+      "explanation": "The image perfectly matches the search query and prompt, providing a stunning wide-angle view of Registan Square. The architectural details of the three madrasahs are sharp and vibrant, showcasing the intricate Islamic tile work and iconic blue domes. The composition is balanced and professional, with no visible watermarks or distracting elements.",
+      "file_name": "registan-square-samarkand-historic-architecture.jpg",
+      "caption": "A panoramic view of the majestic Registan Square in Samarkand, Uzbekistan, featuring the intricate facades and turquoise domes of the Ulugh Beg, Tilya-Kori, and Sher-Dor Madrasahs.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "beautiful Samarkand Registan Square historic Islamic architecture",
+    "image_info": {
+      "url": "https://irandoostan.com/dostcont/uploads/2023/02/Uzbekistan-Resgistan.webp",
+      "img_format": "WEBP",
+      "mode": "RGB",
+      "file_size": 1216636,
+      "width": 800,
+      "height": 600,
+      "total_pixels": 480000,
+      "basic_score": 0.8958315792064125,
+      "file_name": "samarkand-registan-square-mosaic-architecture-detail.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 90.0,
+      "watermark_score": 100.0,
+      "overall_score": 95.0,
+      "explanation": "The image captures the intricate geometric and floral mosaic patterns typical of Timurid architecture in Samarkand's Registan Square with exceptional clarity and vibrant color saturation. It perfectly aligns with the search query, showing the iconic blue tiles and muqarnas vaulting without any obstructions or watermarks.",
+      "file_name": "samarkand-registan-square-mosaic-architecture-detail.jpg",
+      "caption": "A detailed low-angle view of the ornate muqarnas vaulting and blue ceramic tile mosaics adorning the entrance arch of a historic madrasah in Registan Square, Samarkand, Uzbekistan.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "beautiful Samarkand Registan Square historic Islamic architecture",
+    "image_info": {
+      "url": "https://strafari.com/wp-content/uploads/2025/01/strafari-voyage-travel-ouzbekistan-samarcande-samarkand-registan-crepuscule-dusk-head.jpg?w=1200",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 206064,
+      "width": 1200,
+      "height": 675,
+      "total_pixels": 810000,
+      "basic_score": 0.9295909307250915,
+      "file_name": "samarkand-registan-square-sunset-architecture.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 95.0,
+      "clarity_score": 85.0,
+      "watermark_score": 100.0,
+      "overall_score": 90.0,
+      "explanation": "The image is highly relevant, perfectly capturing the iconic Registan Square architecture as requested. The wide angle displays the three main madrasahs effectively. The clarity is good, with attractive dusk lighting that enhances the details of the facade. There are no visible watermarks. The presence of a crowd adds liveliness and scale, though it slightly distracts from a pure architectural study.",
+      "file_name": "samarkand-registan-square-sunset-architecture.jpg",
+      "caption": "A wide view of the historic Registan Square in Samarkand, Uzbekistan, at sunset, featuring the Ulugh Beg, Tilya-Kori, and Sher-Dor Madrasahs with tourists gathering in the tiled plaza.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "beautiful Samarkand Registan Square historic Islamic architecture",
+    "image_info": {
+      "url": "https://kalpak-travel.com/wp-content/uploads/2025/04/registan-tourists-1024x672.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 164457,
+      "width": 1024,
+      "height": 672,
+      "total_pixels": 688128,
+      "basic_score": 0.907504513333671,
+      "file_name": "registan-square-samarkand-courtyard-tourists.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 95.0,
+      "clarity_score": 85.0,
+      "watermark_score": 100.0,
+      "overall_score": 75.0,
+      "explanation": "The image accurately depicts the iconic architecture of Registan Square in Samarkand, featuring the distinctive blue tilework and ribbed domes. The lighting is excellent, providing good detail. However, the foreground is heavily populated by tourists with their backs to the camera, which obscures the courtyard floor and distracts from a pure focus on the architectural beauty.",
+      "file_name": "registan-square-samarkand-courtyard-tourists.jpg",
+      "caption": "A group of tourists photographing the intricate Islamic tilework and ribbed turquoise domes inside the courtyard of a madrasah at Registan Square in Samarkand, Uzbekistan.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "professional medical conference auditorium with audience for hero background",
+    "image_info": {
+      "url": "https://assets.medpagetoday.net/media/images/100xxx/100579.jpg?width=0.8",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 128959,
+      "width": 1280,
+      "height": 720,
+      "total_pixels": 921600,
+      "basic_score": 0.9327525578731994,
+      "file_name": "medical-conference-auditorium-presentation.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 85.0,
+      "watermark_score": 100.0,
+      "overall_score": 90.0,
+      "explanation": "The image perfectly aligns with the search query and prompt, clearly depicting a professional medical conference in a modern lecture hall. The presentation screen displays specific medical imaging data (trachea/esophagus), confirming the context. The composition is excellent for a hero background, providing depth with the audience in the foreground and the focal point on the stage.",
+      "file_name": "medical-conference-auditorium-presentation.jpg",
+      "caption": "A view from the back of a packed auditorium during a medical conference, showing an audience watching a speaker present ultrasound data regarding the esophagus on a large projection screen.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "professional medical conference auditorium with audience for hero background",
+    "image_info": {
+      "url": "https://medicine.mercer.edu/wp-content/uploads/sites/7/2025/07/Macon-MD-Hooding-Ceremony-2025-238_web.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 294133,
+      "width": 800,
+      "height": 533,
+      "total_pixels": 426400,
+      "basic_score": 0.8569026533881087,
+      "file_name": "medical-conference-auditorium-audience-lecture-hall.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 95.0,
+      "clarity_score": 85.0,
+      "watermark_score": 100.0,
+      "overall_score": 90.0,
+      "explanation": "The image excellently matches the search query, depicting a crowded modern lecture hall. The presence of individuals wearing white coats (visible on the left) strongly supports the 'medical conference' context. The composition, with the empty stage in the foreground, provides negative space suitable for text overlays in a hero background context. The lighting is professional and the image is free of watermarks.",
+      "file_name": "medical-conference-auditorium-audience-lecture-hall.jpg",
+      "caption": "A wide-angle view of a filled modern auditorium with tiered orange seating, hosting a professional medical event or white coat ceremony with a diverse audience.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "professional medical conference auditorium with audience for hero background",
+    "image_info": {
+      "url": "https://s47295.pcdn.co/wp-content/uploads/2021/12/UHAT-header-900x450.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 88025,
+      "width": 900,
+      "height": 450,
+      "total_pixels": 405000,
+      "basic_score": 0.8146443937622871,
+      "file_name": "modern-medical-lecture-hall-auditorium.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 80.0,
+      "clarity_score": 90.0,
+      "watermark_score": 100.0,
+      "overall_score": 85.0,
+      "explanation": "The image depicts a high-quality, modern auditorium with a screen specifically displaying medical content, which aligns perfectly with the 'medical conference' theme. However, the prompt specifically requested an image 'with audience,' and this hall is empty. Despite missing the crowd, the clean lines and open space make it an excellent candidate for a hero background where text needs to be overlaid.",
+      "file_name": "modern-medical-lecture-hall-auditorium.jpg",
+      "caption": "A wide-angle view of a modern, empty tiered lecture hall featuring wood paneling and a large projection screen displaying a medical consultation scene.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "professional medical conference auditorium with audience for hero background",
+    "image_info": {
+      "url": "https://media.eventective.com/3700842_lg.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 83529,
+      "width": 768,
+      "height": 576,
+      "total_pixels": 442368,
+      "basic_score": 0.8390038690910473,
+      "file_name": "medical-school-auditorium-lecture-hall-interior.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 80.0,
+      "clarity_score": 85.0,
+      "watermark_score": 100.0,
+      "overall_score": 85.0,
+      "explanation": "The image perfectly depicts a high-end medical lecture hall, confirmed by the text on the projector screen. The lighting and composition are excellent for a hero background. However, the score is impacted because the prompt specifically requested an image \"with audience,\" and this auditorium is empty.",
+      "file_name": "medical-school-auditorium-lecture-hall-interior.jpg",
+      "caption": "Wide-angle interior view of the Washington University in St. Louis School of Medicine auditorium, featuring modern curved tiered seating, architectural ceiling lighting, and a large projection screen.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Samarkand State Medical University campus building exterior",
+    "image_info": {
+      "url": "https://img.freepik.com/premium-photo/samarkand-uzbekistan-7282023-samarkand-state-medical-university_789096-7091.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 92397,
+      "width": 626,
+      "height": 417,
+      "total_pixels": 261042,
+      "basic_score": 0.7801239917806515,
+      "file_name": "samarkand-state-medical-university-exterior-facade.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 85.0,
+      "watermark_score": 100.0,
+      "overall_score": 90.0,
+      "explanation": "The image perfectly matches the search query, clearly showing the building with readable signage identifying it as Samarkand State Medical University in both English and Uzbek. The composition is symmetrical and professional, with good lighting and no visible watermarks.",
+      "file_name": "samarkand-state-medical-university-exterior-facade.jpg",
+      "caption": "The grand neoclassical exterior of Samarkand State Medical University (Samarqand Davlat Tibbiyot Universiteti) in Uzbekistan, featuring tall white columns, a brown brick facade, and a gated entrance with bilingual signage.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Samarkand State Medical University campus building exterior",
+    "image_info": {
+      "url": "https://www.themdhouse.com/blog/wp-content/uploads/2023/08/Study-MBBS-in-Uzbekistan-1.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 88062,
+      "width": 960,
+      "height": 640,
+      "total_pixels": 614400,
+      "basic_score": 0.8844919101062333,
+      "file_name": "samarkand-state-medical-university-main-building-exterior.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 85.0,
+      "watermark_score": 100.0,
+      "overall_score": 90.0,
+      "explanation": "The image is an exact match for the search query, featuring clear signage that reads 'Samarkand State Medical University'. The symmetrical composition showcases the grand architectural style effectively. The image is bright and clean, with no visible watermarks, though the sky is slightly overexposed.",
+      "file_name": "samarkand-state-medical-university-main-building-exterior.jpg",
+      "caption": "Front view of the majestic white main building of Samarkand State Medical University, featuring classical columns, an iron gate entrance with official signage, and vibrant flower beds in the foreground.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Samarkand State Medical University campus building exterior",
+    "image_info": {
+      "url": "https://www.sammu.uz/upload/cover-images/636b6e17b9a31-636b6e17b9a32-636b6e17b9a33-636b6e17b9a34.png",
+      "img_format": "PNG",
+      "mode": "RGBA",
+      "file_size": 1042977,
+      "width": 1200,
+      "height": 627,
+      "total_pixels": 752400,
+      "basic_score": 0.9324154613041608,
+      "file_name": "samarkand-state-medical-university-facade.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 75.0,
+      "watermark_score": 100.0,
+      "overall_score": 85.0,
+      "explanation": "The image perfectly matches the search query as it clearly displays the building facade with the name 'SAMARQAND DAVLAT TIBBIYOT UNIVERSITETI' (Samarkand State Medical University) visible. The image is free of watermarks. While the resolution is average and a lamp post sits in the foreground, the subject is unmistakable and well-lit.",
+      "file_name": "samarkand-state-medical-university-facade.jpg",
+      "caption": "The neoclassical exterior facade of Samarkand State Medical University (Samarqand Davlat Tibbiyot Universiteti) featuring prominent white columns under a clear blue sky.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Samarkand State Medical University campus building exterior",
+    "image_info": {
+      "url": "https://www.axisinstitutes.com/assets/samarkand/17.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 108158,
+      "width": 800,
+      "height": 500,
+      "total_pixels": 400000,
+      "basic_score": 0.8258598070433669,
+      "file_name": "samarkand-state-medical-university-main-building-facade.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 65.0,
+      "watermark_score": 95.0,
+      "overall_score": 75.0,
+      "explanation": "The image is an exact match for the search query, clearly displaying the main facade of the Samarkand State Medical University (formerly Institute). The text on the building is legible enough to identify the institution. However, the image resolution is average, with some graininess and a lack of sharp detail. There is a minor sensor dust spot in the upper-left sky, but no commercial watermarks.",
+      "file_name": "samarkand-state-medical-university-main-building-facade.jpg",
+      "caption": "The exterior facade of the main building of Samarkand State Medical University in Uzbekistan, featuring classical architecture with a portico, large wooden entrance doors, and surrounding greenery.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Samarkand State Medical University campus building exterior",
+    "image_info": {
+      "url": "https://universityinsights.in/wp-content/uploads/2024/12/11-Samarkand-State-Medical-University.webp",
+      "img_format": "WEBP",
+      "mode": "RGB",
+      "file_size": 56354,
+      "width": 626,
+      "height": 417,
+      "total_pixels": 261042,
+      "basic_score": 0.7848756510979473,
+      "file_name": "samarkand-state-medical-university-entrance-sign.jpg"
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 70.0,
+      "watermark_score": 40.0,
+      "overall_score": 70.0,
+      "explanation": "The image is perfectly relevant as it features a clear sign identifying 'Samarkand State Medical University'. However, the presence of a 'University Insights' logo in the top left corner and average resolution lowers the professional usability score.",
+      "file_name": "samarkand-state-medical-university-entrance-sign.jpg",
+      "caption": "The main entrance and exterior facade of Samarkand State Medical University, featuring a prominent black sign with gold lettering, metal gates, and a classical building structure with white columns.",
+      "recommend": true,
+      "error": ""
+    }
+  }
+]

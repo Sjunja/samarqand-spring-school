@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Если запрашивается существующий файл или директория, отдаем его
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Все остальные запросы перенаправляем на index.html
+  RewriteRule . /index.html [L]
+</IfModule>

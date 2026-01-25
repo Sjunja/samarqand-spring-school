@@ -1,0 +1,29 @@
+Cloudflare Access Enabled
+Access enabled for:
+
+nameless-salad-84eb.sjunja.workers.dev
+Important: Update your Worker script to validate Access JWTs or your application won’t be secure. Only users in your Cloudflare account can access this domain.
+
+Manage policies.
+Audience (aud)
+
+619453b586ee5accf1ef50bfa53c20dcbd045b247decaf15c4d7c1bb03a0de68
+JWKs URL
+
+https://sjunja.cloudflareaccess.com/cdn-cgi/access/certs
+
+
+
+Cloudflare Access Enabled
+Access enabled for:
+
+*-nameless-salad-84eb.sjunja.workers.dev
+Important: Update your Worker script to validate Access JWTs or your application won’t be secure. Only users in your Cloudflare account can access this domain.
+
+Manage policies.
+Audience (aud)
+
+a4937cb58b9a33a1782279e88f644b94c52b96e1ba938ed3eeb27df0faa5aa3b
+JWKs URL
+
+https://sjunja.cloudflareaccess.com/cdn-cgi/access/certs
