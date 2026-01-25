@@ -1,1 +1,17 @@
+# Don't redirect static assets
+/assets/* 200
+/images/* 200
+/*.css 200
+/*.js 200
+/*.json 200
+/*.ico 200
+/*.png 200
+/*.jpg 200
+/*.jpeg 200
+/*.svg 200
+/*.woff 200
+/*.woff2 200
+/*.ttf 200
+
+# Redirect all other requests to index.html for client-side routing
 /* /index.html 200

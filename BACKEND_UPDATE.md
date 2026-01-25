@@ -124,3 +124,11 @@ Click to copy
     "database_name": "samarqand_school_db",
     "database_id": "a5be016a-ba1a-459c-89bc-d2cb7d74f278"
  }]
+
+
+
+ MAIL FROM = noreply@samarqand-school.uz
+MAIL FROM_NAME = Samarqand Spring School
+MAIL_REPLY_TO = uzpa.org@gmail.com
+SCHOOL_EMAIL = uzpa.org@gmail.com
+DEVELOPER_EMAILS = Baw-email@example.com
