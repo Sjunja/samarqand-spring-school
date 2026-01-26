@@ -18,6 +18,8 @@ const generateFilePath = (email: string, filename: string, prefix: string) => {
   return `${prefix}/${safeEmail}/${fileId}.${extension}`;
 };
 
+const isFile = (value: unknown): value is File => typeof File !== 'undefined' && value instanceof File;
+
 export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: corsHeaders });
@@ -64,11 +66,11 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
   let membershipProofName: string | null = null;
   const proof = form.get('membershipProof');
 
-  if (participantCategory === 'apu-member' && !(proof instanceof File)) {
+  if (participantCategory === 'apu-member' && !isFile(proof)) {
     return jsonResponse({ success: false, error: 'Membership proof required' }, 400);
   }
 
-  if (proof instanceof File && proof.size > 0) {
+  if (isFile(proof) && proof.size > 0) {
     membershipProofName = proof.name;
     membershipProofPath = generateFilePath(email, proof.name, 'membership');
     try {

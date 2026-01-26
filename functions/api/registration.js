@@ -93,6 +93,7 @@ var generateFilePath = (email, filename, prefix) => {
   const fileId = crypto.randomUUID();
   return `${prefix}/${safeEmail}/${fileId}.${extension}`;
 };
+var isFile = (value) => typeof File !== "undefined" && value instanceof File;
 var onRequest = async ({ request, env }) => {
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders });
@@ -130,10 +131,10 @@ var onRequest = async ({ request, env }) => {
   let membershipProofPath = null;
   let membershipProofName = null;
   const proof = form.get("membershipProof");
-  if (participantCategory === "apu-member" && !(proof instanceof File)) {
+  if (participantCategory === "apu-member" && !isFile(proof)) {
     return jsonResponse({ success: false, error: "Membership proof required" }, 400);
   }
-  if (proof instanceof File && proof.size > 0) {
+  if (isFile(proof) && proof.size > 0) {
     membershipProofName = proof.name;
     membershipProofPath = generateFilePath(email, proof.name, "membership");
     try {
