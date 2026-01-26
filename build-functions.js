@@ -5,7 +5,7 @@ import { glob } from 'glob';
 import path from 'path';
 import fs from 'fs/promises';
 
-const functionsDir = './functions';
+const functionsDir = './code/samarqand-school/functions';
 const outputDir = './functions-dist';
 
 async function buildFunctions() {

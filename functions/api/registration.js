@@ -1,4 +1,4 @@
-// functions/api/shared.lib.ts
+// code/samarqand-school/functions/api/shared.lib.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -14,7 +14,7 @@ var jsonResponse = (payload, status = 200) => {
   });
 };
 
-// functions/api/auth.lib.ts
+// code/samarqand-school/functions/api/auth.lib.ts
 var SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
 var PASSWORD_ITERATIONS = 12e4;
 var PASSWORD_KEY_LENGTH = 32;
@@ -46,7 +46,7 @@ var hashPassword = async (password) => {
   };
 };
 
-// functions/api/email.lib.ts
+// code/samarqand-school/functions/api/email.lib.ts
 var MAIL_ENDPOINT = "https://api.mailchannels.net/tx/v1/send";
 var sendEmail = async (env, params) => {
   if (!env.MAIL_FROM) {
@@ -86,7 +86,7 @@ var sendEmail = async (env, params) => {
   return { ok: true };
 };
 
-// functions/api/registration.ts
+// code/samarqand-school/functions/api/registration.ts
 var generateFilePath = (email, filename, prefix) => {
   const safeEmail = email.replace(/[^a-zA-Z0-9]/g, "_");
   const extension = filename.split(".").pop() || "file";

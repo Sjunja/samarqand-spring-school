@@ -1,4 +1,4 @@
-// functions/api/shared.lib.ts
+// code/samarqand-school/functions/api/shared.lib.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -25,7 +25,7 @@ var buildCookie = (name, value, maxAgeSeconds) => {
   return attributes.join("; ");
 };
 
-// functions/api/auth.lib.ts
+// code/samarqand-school/functions/api/auth.lib.ts
 var SESSION_COOKIE = "session_token";
 var SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
 var PASSWORD_ITERATIONS = 12e4;
@@ -47,20 +47,47 @@ var fromBase64 = (value) => {
   }
   return bytes.buffer;
 };
+var isHexString = (value) => /^[0-9a-f]+$/i.test(value) && value.length % 2 === 0;
+var isLegacyHash = (salt, hash) => isHexString(salt) && isHexString(hash) && salt.length === 32 && hash.length === 128;
+var toHex = (buffer) => {
+  const bytes = new Uint8Array(buffer);
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+};
 var verifyPassword = async (password, saltBase64, hashBase64) => {
-  const saltBuffer = fromBase64(saltBase64);
+  try {
+    const saltBuffer2 = fromBase64(saltBase64);
+    const key2 = await crypto.subtle.importKey("raw", encoder.encode(password), "PBKDF2", false, ["deriveBits"]);
+    const hash2 = await crypto.subtle.deriveBits(
+      {
+        name: "PBKDF2",
+        salt: saltBuffer2,
+        iterations: PASSWORD_ITERATIONS,
+        hash: "SHA-256"
+      },
+      key2,
+      PASSWORD_KEY_LENGTH * 8
+    );
+    if (toBase64(hash2) === hashBase64) {
+      return true;
+    }
+  } catch {
+  }
+  if (!isLegacyHash(saltBase64, hashBase64)) {
+    return false;
+  }
+  const saltBuffer = encoder.encode(saltBase64);
   const key = await crypto.subtle.importKey("raw", encoder.encode(password), "PBKDF2", false, ["deriveBits"]);
   const hash = await crypto.subtle.deriveBits(
     {
       name: "PBKDF2",
       salt: saltBuffer,
-      iterations: PASSWORD_ITERATIONS,
-      hash: "SHA-256"
+      iterations: 1e3,
+      hash: "SHA-512"
     },
     key,
-    PASSWORD_KEY_LENGTH * 8
+    64 * 8
   );
-  return toBase64(hash) === hashBase64;
+  return toHex(hash) === hashBase64.toLowerCase();
 };
 var createSessionCookie = (token) => {
   return buildCookie(SESSION_COOKIE, token, SESSION_TTL_SECONDS);
@@ -76,7 +103,7 @@ var createSession = async (env, userId, request) => {
   return { token, expiresAt };
 };
 
-// functions/api/auth/login.ts
+// code/samarqand-school/functions/api/auth/login.ts
 var onRequest = async ({ request, env }) => {
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders });

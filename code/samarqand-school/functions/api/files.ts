@@ -1,5 +1,5 @@
-import { getSessionUser } from './_auth';
-import { corsHeaders, jsonResponse } from './_shared';
+import { getSessionUser } from './auth.lib';
+import { corsHeaders, jsonResponse } from './shared.lib';
 
 interface Env {
   REGISTRATION_FILES: R2Bucket;

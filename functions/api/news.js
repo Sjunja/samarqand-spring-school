@@ -1,4 +1,4 @@
-// functions/api/news.ts
+// code/samarqand-school/functions/api/news.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, OPTIONS",

@@ -1,4 +1,4 @@
-// functions/api/registration-count.ts
+// code/samarqand-school/functions/api/registration-count.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, OPTIONS",

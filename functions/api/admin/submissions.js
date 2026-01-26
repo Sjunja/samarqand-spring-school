@@ -1,4 +1,4 @@
-// functions/api/shared.lib.ts
+// code/samarqand-school/functions/api/shared.lib.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -23,7 +23,7 @@ var parseCookies = (request) => {
   }, {});
 };
 
-// functions/api/auth.lib.ts
+// code/samarqand-school/functions/api/auth.lib.ts
 var SESSION_COOKIE = "session_token";
 var SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
 var encoder = new TextEncoder();
@@ -56,7 +56,7 @@ var getSessionUser = async (env, request) => {
   };
 };
 
-// functions/api/admin/submissions.ts
+// code/samarqand-school/functions/api/admin/submissions.ts
 var onRequest = async ({ request, env }) => {
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders });

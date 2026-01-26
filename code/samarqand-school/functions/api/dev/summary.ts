@@ -1,4 +1,4 @@
-import { corsHeaders, jsonResponse } from '../../shared.lib';
+import { corsHeaders, jsonResponse } from '../shared.lib';
 
 interface Env {
   DB: D1Database;

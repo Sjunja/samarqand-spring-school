@@ -1,6 +1,6 @@
-import { hashPassword } from './_auth';
-import { sendEmail } from './_email';
-import { corsHeaders, jsonResponse } from './_shared';
+import { hashPassword } from './auth.lib';
+import { sendEmail } from './email.lib';
+import { corsHeaders, jsonResponse } from './shared.lib';
 
 interface Env {
   DB: D1Database;

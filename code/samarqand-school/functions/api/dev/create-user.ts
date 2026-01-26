@@ -1,5 +1,5 @@
-import { hashPassword } from '../../auth.lib';
-import { corsHeaders, jsonResponse } from '../../shared.lib';
+import { hashPassword } from '../auth.lib';
+import { corsHeaders, jsonResponse } from '../shared.lib';
 
 interface Env {
   DB: D1Database;

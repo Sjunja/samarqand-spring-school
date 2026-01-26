@@ -1,4 +1,4 @@
-// functions/api/shared.lib.ts
+// code/samarqand-school/functions/api/shared.lib.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -14,7 +14,7 @@ var jsonResponse = (payload, status = 200) => {
   });
 };
 
-// functions/api/dev/summary.ts
+// code/samarqand-school/functions/api/dev/summary.ts
 var isDeveloper = (request, env) => {
   const email = request.headers.get("Cf-Access-Authenticated-User-Email") || "";
   if (!email || !env.DEVELOPER_EMAILS) return false;

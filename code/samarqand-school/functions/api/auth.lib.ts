@@ -1,4 +1,4 @@
-import { buildCookie, buildExpiredCookie, parseCookies } from './_shared';
+import { buildCookie, buildExpiredCookie, parseCookies } from './shared.lib';
 
 export type UserRole = 'participant' | 'admin' | 'developer';
 
@@ -35,6 +35,16 @@ const fromBase64 = (value: string) => {
   return bytes.buffer;
 };
 
+const isHexString = (value: string) => /^[0-9a-f]+$/i.test(value) && value.length % 2 === 0;
+
+const isLegacyHash = (salt: string, hash: string) =>
+  isHexString(salt) && isHexString(hash) && salt.length === 32 && hash.length === 128;
+
+const toHex = (buffer: ArrayBuffer) => {
+  const bytes = new Uint8Array(buffer);
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('');
+};
+
 export const hashPassword = async (password: string) => {
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const key = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
@@ -56,19 +66,43 @@ export const hashPassword = async (password: string) => {
 };
 
 export const verifyPassword = async (password: string, saltBase64: string, hashBase64: string) => {
-  const saltBuffer = fromBase64(saltBase64);
+  try {
+    const saltBuffer = fromBase64(saltBase64);
+    const key = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
+    const hash = await crypto.subtle.deriveBits(
+      {
+        name: 'PBKDF2',
+        salt: saltBuffer,
+        iterations: PASSWORD_ITERATIONS,
+        hash: 'SHA-256',
+      },
+      key,
+      PASSWORD_KEY_LENGTH * 8
+    );
+    if (toBase64(hash) === hashBase64) {
+      return true;
+    }
+  } catch {
+    // Ignore base64 parsing errors and try legacy hashes.
+  }
+
+  if (!isLegacyHash(saltBase64, hashBase64)) {
+    return false;
+  }
+
+  const saltBuffer = encoder.encode(saltBase64);
   const key = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
   const hash = await crypto.subtle.deriveBits(
     {
       name: 'PBKDF2',
       salt: saltBuffer,
-      iterations: PASSWORD_ITERATIONS,
-      hash: 'SHA-256',
+      iterations: 1000,
+      hash: 'SHA-512',
     },
     key,
-    PASSWORD_KEY_LENGTH * 8
+    64 * 8
   );
-  return toBase64(hash) === hashBase64;
+  return toHex(hash) === hashBase64.toLowerCase();
 };
 
 export const createSessionCookie = (token: string) => {

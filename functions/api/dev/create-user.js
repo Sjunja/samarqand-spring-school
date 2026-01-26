@@ -1,4 +1,4 @@
-// functions/api/shared.lib.ts
+// code/samarqand-school/functions/api/shared.lib.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -14,7 +14,7 @@ var jsonResponse = (payload, status = 200) => {
   });
 };
 
-// functions/api/auth.lib.ts
+// code/samarqand-school/functions/api/auth.lib.ts
 var SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
 var PASSWORD_ITERATIONS = 12e4;
 var PASSWORD_KEY_LENGTH = 32;
@@ -46,7 +46,7 @@ var hashPassword = async (password) => {
   };
 };
 
-// functions/api/dev/create-user.ts
+// code/samarqand-school/functions/api/dev/create-user.ts
 var isDeveloper = (request, env) => {
   const email = request.headers.get("Cf-Access-Authenticated-User-Email") || "";
   if (!email || !env.DEVELOPER_EMAILS) return false;

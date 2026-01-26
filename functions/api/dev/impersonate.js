@@ -1,4 +1,4 @@
-// functions/api/shared.lib.ts
+// code/samarqand-school/functions/api/shared.lib.ts
 var corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -25,7 +25,7 @@ var buildCookie = (name, value, maxAgeSeconds) => {
   return attributes.join("; ");
 };
 
-// functions/api/auth.lib.ts
+// code/samarqand-school/functions/api/auth.lib.ts
 var SESSION_COOKIE = "session_token";
 var SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
 var encoder = new TextEncoder();
@@ -43,7 +43,7 @@ var createSession = async (env, userId, request) => {
   return { token, expiresAt };
 };
 
-// functions/api/dev/impersonate.ts
+// code/samarqand-school/functions/api/dev/impersonate.ts
 var isDeveloper = (request, env) => {
   const email = request.headers.get("Cf-Access-Authenticated-User-Email") || "";
   if (!email || !env.DEVELOPER_EMAILS) return false;

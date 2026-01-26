@@ -1,5 +1,5 @@
-import { clearSessionCookie } from '../_auth';
-import { corsHeaders, parseCookies } from '../_shared';
+import { clearSessionCookie } from '../auth.lib';
+import { corsHeaders, parseCookies } from '../shared.lib';
 
 interface Env {
   DB: D1Database;
