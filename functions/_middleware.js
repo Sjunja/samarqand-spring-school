@@ -14,7 +14,7 @@ var onRequest = async ({ request, env, next }) => {
   if (pathname.includes(".")) {
     return next();
   }
-  const indexUrl = new URL("/index.html", url);
+  const indexUrl = new URL("/", url);
   return env.ASSETS.fetch(new Request(indexUrl, request));
 };
 export {

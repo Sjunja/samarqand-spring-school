@@ -18,6 +18,6 @@ export const onRequest: PagesFunction = async ({ request, env, next }) => {
     return next();
   }
 
-  const indexUrl = new URL('/index.html', url);
+  const indexUrl = new URL('/', url);
   return env.ASSETS.fetch(new Request(indexUrl, request));
 };
