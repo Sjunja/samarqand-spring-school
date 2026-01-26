@@ -1,4 +1,4 @@
-import { buildCookie, buildExpiredCookie, parseCookies } from './_shared';
+import { buildCookie, buildExpiredCookie, parseCookies } from './shared.lib';
 
 export type UserRole = 'participant' | 'admin' | 'developer';
 
