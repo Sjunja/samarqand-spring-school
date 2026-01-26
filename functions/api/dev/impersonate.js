@@ -13,6 +13,15 @@ var jsonResponse = (payload, status = 200) => {
     }
   });
 };
+var parseCookies = (request) => {
+  const cookieHeader = request.headers.get("cookie") || "";
+  return cookieHeader.split(";").reduce((acc, pair) => {
+    const [rawKey, ...rest] = pair.trim().split("=");
+    if (!rawKey) return acc;
+    acc[rawKey] = decodeURIComponent(rest.join("="));
+    return acc;
+  }, {});
+};
 var buildCookie = (name, value, maxAgeSeconds) => {
   const attributes = [
     `${name}=${encodeURIComponent(value)}`,
@@ -42,9 +51,41 @@ var createSession = async (env, userId, request) => {
   ).bind(crypto.randomUUID(), userId, token, expiresAt, ip, userAgent).run();
   return { token, expiresAt };
 };
+var getSessionUser = async (env, request) => {
+  const cookies = parseCookies(request);
+  const token = cookies[SESSION_COOKIE];
+  if (!token) {
+    return null;
+  }
+  const record = await env.DB.prepare(
+    `select sessions.token, sessions.expires_at, users.id as user_id, users.email, users.role, users.name, users.registration_id
+     from sessions
+     join users on users.id = sessions.user_id
+     where sessions.token = ?`
+  ).bind(token).first();
+  if (!record) {
+    return null;
+  }
+  const expiresAt = new Date(record.expires_at);
+  if (Number.isNaN(expiresAt.getTime()) || expiresAt.getTime() < Date.now()) {
+    await env.DB.prepare("delete from sessions where token = ?").bind(token).run();
+    return null;
+  }
+  return {
+    id: record.user_id,
+    email: record.email,
+    role: record.role,
+    name: record.name,
+    registrationId: record.registration_id
+  };
+};
 
 // code/samarqand-school/functions/api/dev/impersonate.ts
-var isDeveloper = (request, env) => {
+var isDeveloper = async (request, env) => {
+  const sessionUser = await getSessionUser(env, request);
+  if (sessionUser?.role === "developer") {
+    return true;
+  }
   const email = request.headers.get("Cf-Access-Authenticated-User-Email") || "";
   if (!email || !env.DEVELOPER_EMAILS) return false;
   const allowed = env.DEVELOPER_EMAILS.split(",").map((item) => item.trim().toLowerCase()).filter(Boolean);
@@ -57,7 +98,7 @@ var onRequest = async ({ request, env }) => {
   if (request.method !== "POST") {
     return new Response("Method Not Allowed", { status: 405, headers: corsHeaders });
   }
-  if (!isDeveloper(request, env)) {
+  if (!await isDeveloper(request, env)) {
     return jsonResponse({ success: false, error: "Unauthorized" }, 401);
   }
   let payload = {};

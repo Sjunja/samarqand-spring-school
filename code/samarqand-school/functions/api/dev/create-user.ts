@@ -1,4 +1,4 @@
-import { hashPassword } from '../auth.lib';
+import { getSessionUser, hashPassword } from '../auth.lib';
 import { corsHeaders, jsonResponse } from '../shared.lib';
 
 interface Env {
@@ -6,7 +6,11 @@ interface Env {
   DEVELOPER_EMAILS?: string;
 }
 
-const isDeveloper = (request: Request, env: Env) => {
+const isDeveloper = async (request: Request, env: Env) => {
+  const sessionUser = await getSessionUser(env, request);
+  if (sessionUser?.role === 'developer') {
+    return true;
+  }
   const email = request.headers.get('Cf-Access-Authenticated-User-Email') || '';
   if (!email || !env.DEVELOPER_EMAILS) return false;
   const allowed = env.DEVELOPER_EMAILS.split(',').map((item) => item.trim().toLowerCase()).filter(Boolean);
@@ -22,7 +26,7 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
     return new Response('Method Not Allowed', { status: 405, headers: corsHeaders });
   }
 
-  if (!isDeveloper(request, env)) {
+  if (!await isDeveloper(request, env)) {
     return jsonResponse({ success: false, error: 'Unauthorized' }, 401);
   }
 

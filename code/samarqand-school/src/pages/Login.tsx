@@ -26,7 +26,14 @@ export default function Login() {
 
     const result = await login(email, password);
     if (result?.success) {
-      navigate('/dashboard');
+      const role = result?.user?.role;
+      if (role === 'admin') {
+        navigate('/admin');
+      } else if (role === 'developer') {
+        navigate('/developer');
+      } else {
+        navigate('/dashboard');
+      }
     } else {
       setError(language === 'ru'
         ? 'Неверный email или пароль'

@@ -13,8 +13,18 @@ var jsonResponse = (payload, status = 200) => {
     }
   });
 };
+var parseCookies = (request) => {
+  const cookieHeader = request.headers.get("cookie") || "";
+  return cookieHeader.split(";").reduce((acc, pair) => {
+    const [rawKey, ...rest] = pair.trim().split("=");
+    if (!rawKey) return acc;
+    acc[rawKey] = decodeURIComponent(rest.join("="));
+    return acc;
+  }, {});
+};
 
 // code/samarqand-school/functions/api/auth.lib.ts
+var SESSION_COOKIE = "session_token";
 var SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
 var PASSWORD_ITERATIONS = 1e5;
 var PASSWORD_KEY_LENGTH = 32;
@@ -45,9 +55,41 @@ var hashPassword = async (password) => {
     hash: toBase64(hash)
   };
 };
+var getSessionUser = async (env, request) => {
+  const cookies = parseCookies(request);
+  const token = cookies[SESSION_COOKIE];
+  if (!token) {
+    return null;
+  }
+  const record = await env.DB.prepare(
+    `select sessions.token, sessions.expires_at, users.id as user_id, users.email, users.role, users.name, users.registration_id
+     from sessions
+     join users on users.id = sessions.user_id
+     where sessions.token = ?`
+  ).bind(token).first();
+  if (!record) {
+    return null;
+  }
+  const expiresAt = new Date(record.expires_at);
+  if (Number.isNaN(expiresAt.getTime()) || expiresAt.getTime() < Date.now()) {
+    await env.DB.prepare("delete from sessions where token = ?").bind(token).run();
+    return null;
+  }
+  return {
+    id: record.user_id,
+    email: record.email,
+    role: record.role,
+    name: record.name,
+    registrationId: record.registration_id
+  };
+};
 
 // code/samarqand-school/functions/api/dev/create-user.ts
-var isDeveloper = (request, env) => {
+var isDeveloper = async (request, env) => {
+  const sessionUser = await getSessionUser(env, request);
+  if (sessionUser?.role === "developer") {
+    return true;
+  }
   const email = request.headers.get("Cf-Access-Authenticated-User-Email") || "";
   if (!email || !env.DEVELOPER_EMAILS) return false;
   const allowed = env.DEVELOPER_EMAILS.split(",").map((item) => item.trim().toLowerCase()).filter(Boolean);
@@ -60,7 +102,7 @@ var onRequest = async ({ request, env }) => {
   if (request.method !== "POST") {
     return new Response("Method Not Allowed", { status: 405, headers: corsHeaders });
   }
-  if (!isDeveloper(request, env)) {
+  if (!await isDeveloper(request, env)) {
     return jsonResponse({ success: false, error: "Unauthorized" }, 401);
   }
   let payload = {};
