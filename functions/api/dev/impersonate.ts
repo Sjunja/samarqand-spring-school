@@ -1,5 +1,5 @@
-import { createSession, createSessionCookie } from '../../_auth';
-import { corsHeaders, jsonResponse } from '../../_shared';
+import { createSession, createSessionCookie } from '../../auth.lib';
+import { corsHeaders, jsonResponse } from '../../shared.lib';
 
 interface Env {
   DB: D1Database;
