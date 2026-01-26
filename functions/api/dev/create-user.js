@@ -16,7 +16,7 @@ var jsonResponse = (payload, status = 200) => {
 
 // code/samarqand-school/functions/api/auth.lib.ts
 var SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
-var PASSWORD_ITERATIONS = 12e4;
+var PASSWORD_ITERATIONS = 1e5;
 var PASSWORD_KEY_LENGTH = 32;
 var encoder = new TextEncoder();
 var toBase64 = (buffer) => {

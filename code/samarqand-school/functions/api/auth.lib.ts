@@ -12,7 +12,7 @@ export interface AuthenticatedUser {
 
 const SESSION_COOKIE = 'session_token';
 const SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
-const PASSWORD_ITERATIONS = 120000;
+const PASSWORD_ITERATIONS = 100000;
 const PASSWORD_KEY_LENGTH = 32;
 
 const encoder = new TextEncoder();
