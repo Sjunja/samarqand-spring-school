@@ -19,6 +19,10 @@ export default function DeveloperDashboard() {
 
   const refresh = async () => {
     const data = await getDevSummary();
+    if (!data?.success) {
+      navigate('/login');
+      return;
+    }
     setSummary(data);
     setLoading(false);
   };
