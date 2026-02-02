@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe } from 'lucide-react';
 import { useI18n, getLogoPath, Language } from '../lib/i18n';
+import { getCurrentUser, type AuthUser } from '../lib/backend';
 
 const navItems = [
   { key: 'nav.home', path: '/' },
@@ -19,6 +20,7 @@ export default function Header() {
   const { language, setLanguage, t } = useI18n();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<AuthUser | null>(null);
   const location = useLocation();
 
   const languages: { code: Language; name: string }[] = [
@@ -26,6 +28,10 @@ export default function Header() {
     { code: 'ru', name: 'Русский' },
     { code: 'uz', name: 'O\'zbek' },
   ];
+
+  useEffect(() => {
+    getCurrentUser().then(setCurrentUser);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-nav">
@@ -55,6 +61,18 @@ export default function Header() {
                 {t(item.key)}
               </Link>
             ))}
+            {currentUser?.role === 'admin' && (
+              <Link
+                to="/admin"
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  location.pathname === '/admin'
+                    ? 'text-primary-500'
+                    : 'text-neutral-700 hover:text-primary-500'
+                }`}
+              >
+                {language === 'ru' ? 'Админ-панель' : language === 'uz' ? 'Admin panel' : 'Admin Panel'}
+              </Link>
+            )}
           </nav>
 
           {/* Right side: Language + CTA */}
@@ -125,6 +143,19 @@ export default function Header() {
                 {t(item.key)}
               </Link>
             ))}
+            {currentUser?.role === 'admin' && (
+              <Link
+                to="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-2 text-base font-medium ${
+                  location.pathname === '/admin'
+                    ? 'text-primary-500'
+                    : 'text-neutral-700'
+                }`}
+              >
+                {language === 'ru' ? 'Админ-панель' : language === 'uz' ? 'Admin panel' : 'Admin Panel'}
+              </Link>
+            )}
             <Link
               to="/registration"
               onClick={() => setMobileMenuOpen(false)}
