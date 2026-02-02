@@ -295,8 +295,8 @@ const translations: Record<Language, TranslationStrings> = {
     'nav.contacts': 'Aloqalar',
     
     // Qahramon
-    'hero.title': 'III Samarqand bahor maktabi',
-    'hero.subtitle': 'yosh psixiatrlar va narkologlar uchun',
+    'hero.title': 'III Yosh psixiatr va narkologlar bahorgi Samarqand maktabi',
+    'hero.subtitle': '',
     'hero.dates': '2026 yil 8-12 aprel',
     'hero.location': 'Samarqand, Oʻzbekiston',
     'hero.register': 'Roʻyxatdan oʻtish',
@@ -316,7 +316,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Haqida
     'about.title': 'Maktab haqida',
-    'about.description': 'Uchinchi Samarqand bahorgi yosh psixiatrlar va narkologlar maktabi Oʻzbekiston psixiatrlari assotsiatsiyasining ilmiy va taʼlimiy loyihasi doirasida oʻtkaziladi.',
+    'about.description': 'III Yosh psixiatr va narkologlar bahorgi Samarqand maktabi Oʻzbekiston psixiatrlari assotsiatsiyasining ilmiy va taʼlimiy loyihasi doirasida oʻtkaziladi.',
     'about.audience': 'Maqsadli auditoriya',
     'about.audience.desc': 'Oflayn formatda ishtirok etish uchun 40 yoshgacha boʻlgan yosh mutaxassislar — psixiatrlar, narkologlar, psixoterapevtlar, tibbiy psixologlar, nevrologlar va boshqa turdosh ixtisosliklar shifokorlari, shuningdek psixiatriya, narkologiya, tibbiy psixologiya boʻyicha magistratura rezidentlari va klinik ordinatorlar taklif etiladi. Onlayn formatda shu yoʻnalishdagi mutaxassislar yosh chegarasisiz taklif etiladi. Ingliz tilini bilish afzallik hisoblanadi.',
     
