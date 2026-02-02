@@ -282,3 +282,63 @@ export async function impersonateUser(userId: string) {
   });
   return response.ok;
 }
+
+export async function getAdminNews() {
+  const response = await fetch(buildUrl('/api/admin/news'), { credentials: 'include' });
+  if (response.status === 401 || response.status === 403) {
+    return null;
+  }
+  if (!response.ok) {
+    return [];
+  }
+  const payload = await response.json().catch(() => ({}));
+  return payload?.news || [];
+}
+
+export async function createNews(data: {
+  title_en: string;
+  title_ru: string;
+  title_uz: string;
+  content_en: string;
+  content_ru: string;
+  content_uz: string;
+  is_published: boolean;
+}) {
+  const response = await fetch(buildUrl('/api/admin/news'), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+    credentials: 'include',
+  });
+  if (!response.ok) {
+    return { success: false };
+  }
+  const payload = await response.json().catch(() => ({}));
+  return payload?.success ? { success: true, id: payload.id } : { success: false };
+}
+
+export async function updateNews(id: string, data: {
+  title_en?: string;
+  title_ru?: string;
+  title_uz?: string;
+  content_en?: string;
+  content_ru?: string;
+  content_uz?: string;
+  is_published?: boolean;
+}) {
+  const response = await fetch(buildUrl('/api/admin/news'), {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, ...data }),
+    credentials: 'include',
+  });
+  return response.ok;
+}
+
+export async function deleteNews(id: string) {
+  const response = await fetch(buildUrl(`/api/admin/news?id=${encodeURIComponent(id)}`), {
+    method: 'DELETE',
+    credentials: 'include',
+  });
+  return response.ok;
+}
