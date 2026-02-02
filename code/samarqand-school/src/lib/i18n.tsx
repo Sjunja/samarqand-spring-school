@@ -324,8 +324,8 @@ const translations: Record<Language, TranslationStrings> = {
     'organizers.title': 'Tashkilotchilar',
     'org.0': 'Oʻzbekiston Respublikasi Sogʻliqni Saqlash Vazirligi',
     'org.1': 'Ruhiy salomatlik boʻyicha Respublika ixtisoslashgan ilmiy-amaliy tibbiyot markazi',
-    'org.2': 'Samarqand Davlat Tibbiyot Universiteti',
-    'org.3': 'Toshkent Davlat Tibbiyot Universiteti',
+    'org.2': 'Samarqand davlat tibbiyot universiteti',
+    'org.3': 'Toshkent davlat tibbiyot universiteti',
     'org.4': 'Jahon psixiatriya assotsiatsiyasi',
     'org.5': 'Oʻzbekiston psixiatrlari assotsiatsiyasi',
     
