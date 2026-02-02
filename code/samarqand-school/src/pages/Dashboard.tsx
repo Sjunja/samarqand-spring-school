@@ -169,7 +169,6 @@ export default function Dashboard() {
             >
               <option value="abstract">{language === 'ru' ? 'Тезисы' : language === 'uz' ? 'Tezis' : 'Abstract'}</option>
               <option value="article">{language === 'ru' ? 'Статья' : language === 'uz' ? 'Maqola' : 'Article'}</option>
-              <option value="poster">{language === 'ru' ? 'Постер' : language === 'uz' ? 'Poster' : 'Poster'}</option>
             </select>
             <input
               type="text"

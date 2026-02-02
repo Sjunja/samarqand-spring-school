@@ -1,11 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useI18n, type Language } from '../lib/i18n';
 import { submitRegistration, getRegistrationCount, isBackendConfigured } from '../lib/backend';
-import { AlertCircle, CheckCircle, Users, Clock, Check, ExternalLink, Upload, X } from 'lucide-react';
+import { AlertCircle, CheckCircle, Users, Clock, Check, Upload, X } from 'lucide-react';
 import PriceCalculator from '../components/PriceCalculator';
 
 const MAX_PARTICIPANTS = 100;
-const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfxA3CvmD9LRW1xp6axVM-q7vCMnTDEWOFLyuJVbJbmbGrieA/viewform?usp=sf_link';
 const REGISTRATION_DEADLINE = '2026-03-01';
 const DISCOUNT_RATE = 0.1;
 
@@ -621,7 +620,11 @@ export default function Registration() {
     }
 
     if (!isBackendConfigured || !dbAvailable) {
-      window.open(GOOGLE_FORM_URL, '_blank');
+      setError(language === 'ru'
+        ? 'Регистрация временно недоступна. Попробуйте позже.'
+        : language === 'uz'
+        ? 'Roʻyxatdan oʻtish vaqtincha mavjud emas. Keyinroq qayta urinib koʻring.'
+        : 'Registration temporarily unavailable. Please try again later.');
       return;
     }
 
@@ -660,7 +663,11 @@ export default function Registration() {
     } else {
       if (result.error === 'Database not configured' || result.error === 'Connection error') {
         setDbAvailable(false);
-        window.open(GOOGLE_FORM_URL, '_blank');
+        setError(language === 'ru'
+          ? 'Ошибка подключения к базе данных. Попробуйте позже.'
+          : language === 'uz'
+          ? 'Maʼlumotlar bazasiga ulanishda xatolik. Keyinroq qayta urinib koʻring.'
+          : 'Database connection error. Please try again later.');
       } else {
         setError(result.error || t('form.error'));
       }
@@ -865,26 +872,6 @@ export default function Registration() {
                   <Clock className="w-5 h-5 text-neutral-500" />
                   <span className="text-sm font-medium text-neutral-700">{t('reg.deadline')}</span>
                 </div>
-
-                {/* Google Forms Alternative */}
-                <a
-                  href={GOOGLE_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-4 bg-info/10 border border-info/30 rounded-md hover:bg-info/20 transition-colors"
-                >
-                  <div className="flex items-center gap-2 text-info font-medium mb-1">
-                    <ExternalLink className="w-4 h-4" />
-                    Google Forms
-                  </div>
-                  <p className="text-sm text-neutral-600">
-                    {language === 'ru'
-                      ? 'Альтернативная регистрация через Google Forms'
-                      : language === 'uz'
-                      ? 'Google Forms orqali muqobil roʻyxatdan oʻtish'
-                      : 'Alternative registration via Google Forms'}
-                  </p>
-                </a>
               </div>
               <div className="lg:col-span-2">
                 {success ? (
@@ -908,17 +895,6 @@ export default function Registration() {
                       </div>
                     )}
 
-                    {!dbAvailable && (
-                      <div className="p-4 bg-info/10 border border-info/30 rounded-md">
-                        <p className="text-sm text-neutral-700">
-                          {language === 'ru'
-                            ? 'Форма перенаправит вас на Google Forms для завершения регистрации.'
-                            : language === 'uz'
-                            ? 'Shakl sizni roʻyxatdan oʻtishni yakunlash uchun Google Formsga yoʻnaltiradi.'
-                            : 'Form will redirect you to Google Forms to complete registration.'}
-                        </p>
-                      </div>
-                    )}
 
                     <div>
                       <h3 className="text-lg font-semibold text-neutral-900 mb-4">{personalTitle}</h3>
@@ -1305,12 +1281,7 @@ export default function Registration() {
                       disabled={loading || isClosed}
                       className="w-full h-14 bg-primary-500 hover:bg-primary-600 disabled:bg-neutral-300 text-white font-semibold rounded-sm transition-colors duration-200 flex items-center justify-center gap-2"
                     >
-                      {loading ? '...' : (
-                        <>
-                          {t('form.submit')}
-                          {!dbAvailable && <ExternalLink className="w-4 h-4" />}
-                        </>
-                      )}
+                      {loading ? '...' : t('form.submit')}
                     </button>
                   </form>
                 )}
