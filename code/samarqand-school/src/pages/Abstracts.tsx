@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useI18n } from '../lib/i18n';
 import { AlertCircle, FileText, Mail, List, Clock } from 'lucide-react';
 
@@ -145,12 +146,43 @@ export default function Abstracts() {
             <AlertCircle className="w-6 h-6 text-error flex-shrink-0" />
             <div>
               <h2 className="font-bold text-neutral-900 text-lg mb-1">{t('abstract.deadline')}</h2>
-              <p className="text-neutral-700">
-                {language === 'ru' 
+              <p className="text-neutral-700 mb-2">
+                {language === 'ru'
                   ? 'Принимаются тезисы и статьи. Требования к статьям приведены в правилах журнала ниже.'
                   : language === 'uz'
                   ? 'Tezislar va maqolalar qabul qilinadi. Maqolalar uchun talablar quyida jurnal qoidalarida keltirilgan.'
                   : 'Abstracts and articles are accepted. Article requirements are listed in the journal guidelines below.'}
+              </p>
+              <p className="text-neutral-700">
+                {language === 'ru'
+                  ? (
+                    <>
+                      Публикации подаются через{' '}
+                      <Link to="/login" className="text-primary-600 hover:text-primary-700 font-semibold underline">
+                        личный кабинет
+                      </Link>
+                      .
+                    </>
+                  )
+                  : language === 'uz'
+                  ? (
+                    <>
+                      Nashrlar{' '}
+                      <Link to="/login" className="text-primary-600 hover:text-primary-700 font-semibold underline">
+                        shaxsiy kabinet
+                      </Link>
+                      {' '}orqali topshiriladi.
+                    </>
+                  )
+                  : (
+                    <>
+                      Publications are submitted through the{' '}
+                      <Link to="/login" className="text-primary-600 hover:text-primary-700 font-semibold underline">
+                        personal cabinet
+                      </Link>
+                      .
+                    </>
+                  )}
               </p>
             </div>
           </div>
