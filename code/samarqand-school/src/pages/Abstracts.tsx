@@ -199,21 +199,7 @@ export default function Abstracts() {
           </div>
 
           {/* Submission Info */}
-          <div className="mt-8 grid md:grid-cols-2 gap-6">
-            <div className="p-6 bg-secondary-50 border border-secondary-200 rounded-md">
-              <div className="flex items-center gap-3 mb-3">
-                <Mail className="w-5 h-5 text-secondary-600" />
-                <span className="font-semibold text-neutral-900">{t('abstract.email')}</span>
-              </div>
-              <a href="mailto:uzpa.org@gmail.com" className="text-primary-500 hover:underline text-lg">uzpa.org@gmail.com</a>
-              <p className="text-sm text-neutral-600 mt-2">
-                {language === 'ru' 
-                  ? 'Или загрузите файлы через форму на сайте (в разработке)'
-                  : language === 'uz'
-                  ? 'Yoki fayllarni sayt orqali yuklang (ishlab chiqilmoqda)'
-                  : 'Or upload files through the website form (in development)'}
-              </p>
-            </div>
+          <div className="mt-8">
             <div className="p-6 bg-neutral-100 border border-neutral-200 rounded-md">
               <div className="flex items-center gap-3 mb-3">
                 <FileText className="w-5 h-5 text-neutral-600" />

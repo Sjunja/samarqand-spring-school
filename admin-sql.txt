@@ -1,0 +1,43 @@
+-- SQL команды для создания администраторов
+-- Выполните в Cloudflare D1 Console или через wrangler
+-- https://dash.cloudflare.com → D1 → samarqand_school_db → Console
+
+-- Главный администратор (admin@samarqand-school.uz)
+INSERT INTO users (id, email, password_hash, password_salt, role, name, created_at)
+VALUES (
+  '8dcbdfe1-11c4-444b-9021-74fb6f44085b',
+  'admin@samarqand-school.uz',
+  'e470314334d2d9cfc50bf1a538fcfde8b83d51464a68a740b137171e9c1bc40c1f2eaa38bbfad9070e3908de056e1dd2e7e32fda68e08e449e7c3659b35d4bd4',
+  '1271bb36956e70377b8111c6ac800e90',
+  'admin',
+  'Главный администратор',
+  datetime('now')
+);
+
+-- Ассоциация психиатров (uzpa.org@gmail.com)
+INSERT INTO users (id, email, password_hash, password_salt, role, name, created_at)
+VALUES (
+  '8cb831e0-03cc-4ec5-b7be-67430198eb7f',
+  'uzpa.org@gmail.com',
+  '770b500373113758d6cdee40c6f6349766215e3ff7ce54c751f3344786db44eb2b0a9c0d722fc0636b2aaf8f081b1015bbfe6423ccad6d30d18f5ec756ca9c5a',
+  'f0131dee1b81486c418bd1d46023ad64',
+  'admin',
+  'Ассоциация психиатров',
+  datetime('now')
+);
+
+-- Разработчик (sjunja@gmail.com)
+INSERT INTO users (id, email, password_hash, password_salt, role, name, created_at)
+VALUES (
+  '3f0c1140-6866-4f65-a3e2-29be1f2c5934',
+  'sjunja@gmail.com',
+  'af222b016c1511872571d4850ae90f919306d30113be9090ccde5a3f45384b03139e3e707d383d7b1eb6f4440ffc2999d05aeb144de443ec33767b3558c57c0e',
+  '91134c0016bb219c5a2fc1aa67146716',
+  'developer',
+  'Разработчик',
+  datetime('now')
+);
+
+
+-- Проверка созданных пользователей:
+SELECT id, email, name, role, created_at FROM users ORDER BY created_at DESC;

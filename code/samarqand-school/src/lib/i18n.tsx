@@ -59,7 +59,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Registration
     'reg.title': 'Participant Registration',
-    'reg.notice': 'Limited to 50 in-person and 50 online participants. First come, first served.',
+    'reg.notice': 'Limited to 50 in-person and 50 online participants.',
     'reg.deadline': 'Registration Deadline: March 1, 2026',
     'reg.free': 'Participation is paid according to the approved price list. 10% discount for participants who have paid membership fees for 2026.',
     'reg.requirements': 'Eligibility',
@@ -195,7 +195,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Registration
     'reg.title': 'Регистрация участников',
-    'reg.notice': 'Количество мест ограничено - 50 очно и 50 онлайн участников. Первый пришел - первый обслужен.',
+    'reg.notice': 'Количество мест ограничено - 50 очно и 50 онлайн участников.',
     'reg.deadline': 'Дедлайн регистрации: 1 марта 2026',
     'reg.free': 'Участие платное согласно утвержденному прайсу. Скидка 10% для участников, оплативших членские взносы за 2026 год.',
     'reg.requirements': 'Условия участия',
@@ -331,7 +331,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Roʻyxatdan oʻtish
     'reg.title': 'Ishtirokchilarni roʻyxatdan oʻtkazish',
-    'reg.notice': 'Joylar soni 50 nafar bevosita va 50 nafar onlayn ishtirokchi bilan cheklangan. Kim avval keladi, avval xizmat oladi.',
+    'reg.notice': 'Joylar soni 50 nafar bevosita va 50 nafar onlayn ishtirokchi bilan cheklangan.',
     'reg.deadline': 'Roʻyxatdan oʻtish muddati: 2026 yil 1 mart',
     'reg.free': 'Ishtirok etish tasdiqlangan narxlar roʻyxatiga muvofiq toʻlovni oʻz ichiga oladi. 2026 yil uchun aʼzolik badallarini toʻlagan ishtirokchilarga 10% chegirma taqdim etiladi.',
     'reg.requirements': 'Ishtirok shartlari',

@@ -150,3 +150,29 @@ registration:1 [DOM] Input elements should have autocomplete attributes (suggest
 registration:1 [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) <input type=​"password" required class=​"w-full h-12 px-4 border border-neutral-200 rounded-sm focus:​outline-none focus:​ring-2 focus:​ring-primary-500 focus:​border-transparent" data-matrix-id=​"src/​pages/​Registration.tsx:​981:​26" data-matrix-name=​"input" data-component-path=​"src/​pages/​Registration.tsx" data-component-line=​"981" data-component-file=​"Registration.tsx" data-component-name=​"input" data-component-content=​"%7B%22type%22%3A%22password%22%2C%22required%22%3Atrue%2C%22value%22%3A%22%5BMemberExpression%5D%22%2C%22onChange%22%3A%22%5BArrowFunctionExpression%5D%22%2C%22className%22%3A%22w-full%20h-12%20px-4%20border%20border-neutral-200%20rounded-sm%20focus%3Aoutline-none%20focus%3Aring-2%20focus%3Aring-primary-500%20focus%3Aborder-transparent%22%2C%22disabled%22%3A%22%5BIdentifier%5D%22%7D" value=​"08111978">​
 api/registration-count:1  Failed to load resource: the server responded with a status of 404 ()
 api/registration:1  Failed to load resource: the server responded with a status of 405 ()
+
+
+
+
+
+Основные доступы:
+GitHub
+Репозиторий: https://github.com/Sjunja/samarqand-spring-school
+PAT Token: [REMOVED FOR SECURITY]
+⚠️ ВАЖНО: Токен был удален из документации по соображениям безопасности.
+Cloudflare Pages
+Проект: samarqand-spring-school
+URL: https://samarqand-spring-school.pages.dev
+Используется кастомный домен: samarqand-school.org 
+Dashboard: https://dash.cloudflare.com
+Cloudflare D1 Database
+Database ID: a5be016a-ba1a-459c-89bc-d2cb7d74f278
+Binding: DB
+Cloudflare R2 Storage
+Bucket: samarqand-school-db
+Binding: REGISTRATION_FILES
+Email переменные
+MAIL_FROM: noreply@samarqand-school.uz
+SCHOOL_EMAIL: uzpa.org@gmail.com
+DEVELOPER_EMAILS: sjunja@gmail.com
+Документ содержит все команды, примеры использования и инструкции по безопасности.
