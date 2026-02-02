@@ -62,11 +62,11 @@ export default function About() {
     { name: t('org.5'), icon: Building2 },
   ];
 
-  const benefits = language === 'ru' 
-    ? ['Бесплатное участие', 'Лекции ведущих экспертов', 'Интерактивные семинары', 'Публикация в "Междисциплинарном журнале психиатрии и аддиктологии"', 'Нетворкинг', 'Конкурс научных работ']
+  const benefits = language === 'ru'
+    ? ['Лекции ведущих экспертов', 'Интерактивные семинары', 'Публикация в "Междисциплинарном журнале психиатрии и аддиктологии"', 'Нетворкинг', 'Конкурс научных работ']
     : language === 'uz'
-    ? ['Bepul ishtirok', 'Yetakchi ekspertlar maʼruzalari', 'Interaktiv seminarlar', '"Psixiatriya va addiktologiya boʻyicha fanlararo jurnal"da nashr', 'Networking', 'Ilmiy ishlar tanlovi']
-    : ['Free participation', 'Lectures by leading experts', 'Interactive seminars', 'Publication in "Interdisciplinary Journal of Psychiatry and Addictology"', 'Networking', 'Research competition'];
+    ? ['Yetakchi ekspertlar maʼruzalari', 'Interaktiv seminarlar', '"Psixiatriya va addiktologiya boʻyicha fanlararo jurnal"da nashr', 'Networking', 'Ilmiy ishlar tanlovi']
+    : ['Lectures by leading experts', 'Interactive seminars', 'Publication in "Interdisciplinary Journal of Psychiatry and Addictology"', 'Networking', 'Research competition'];
 
   return (
     <main className="pt-20 lg:pt-24">

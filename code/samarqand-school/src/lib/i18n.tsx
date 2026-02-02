@@ -28,7 +28,7 @@ const translations: Record<Language, TranslationStrings> = {
     'hero.dates': 'April 8-12, 2026',
     'hero.location': 'Samarkand, Uzbekistan',
     'hero.register': 'Register Now',
-    'hero.submit': 'Submit Abstract',
+    'hero.submit': 'Submit Publication',
     
     // Key Numbers
     'stats.participants': 'Participants',
@@ -38,7 +38,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Dates
     'dates.title': 'Important Dates',
-    'dates.abstract': 'Abstract Deadline',
+    'dates.abstract': 'Publication Submission Deadline',
     'dates.registration': 'Registration Deadline',
     'dates.event': 'Event Dates',
     
@@ -52,8 +52,8 @@ const translations: Record<Language, TranslationStrings> = {
     'organizers.title': 'Organizers',
     'org.0': 'Ministry of Health of the Republic of Uzbekistan',
     'org.1': 'Republican Specialized Scientific-Practical Medical Center for Mental Health',
-    'org.2': 'Tashkent State Medical University',
-    'org.3': 'Samarkand State Medical University',
+    'org.2': 'Samarkand State Medical University',
+    'org.3': 'Tashkent State Medical University',
     'org.4': 'World Psychiatric Association',
     'org.5': 'Psychiatric Association of Uzbekistan',
     
@@ -164,7 +164,7 @@ const translations: Record<Language, TranslationStrings> = {
     'hero.dates': '8-12 апреля 2026',
     'hero.location': 'Самарканд, Узбекистан',
     'hero.register': 'Регистрация',
-    'hero.submit': 'Подать тезисы',
+    'hero.submit': 'Подать публикацию',
     
     // Key Numbers
     'stats.participants': 'Участников',
@@ -174,7 +174,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Dates
     'dates.title': 'Важные даты',
-    'dates.abstract': 'Дедлайн тезисов',
+    'dates.abstract': 'Дедлайн подачи публикации',
     'dates.registration': 'Дедлайн регистрации',
     'dates.event': 'Даты мероприятия',
     
@@ -188,8 +188,8 @@ const translations: Record<Language, TranslationStrings> = {
     'organizers.title': 'Организаторы',
     'org.0': 'Министерство здравоохранения Республики Узбекистан',
     'org.1': 'Республиканский специализированный научно-практический медицинский центр психического здоровья',
-    'org.2': 'Ташкентский государственный медицинский университет',
-    'org.3': 'Самаркандский государственный медицинский университет',
+    'org.2': 'Самаркандский государственный медицинский университет',
+    'org.3': 'Ташкентский государственный медицинский университет',
     'org.4': 'Всемирная психиатрическая ассоциация',
     'org.5': 'Ассоциация психиатров Узбекистана',
     
@@ -300,7 +300,7 @@ const translations: Record<Language, TranslationStrings> = {
     'hero.dates': '2026 yil 8-12 aprel',
     'hero.location': 'Samarqand, Oʻzbekiston',
     'hero.register': 'Roʻyxatdan oʻtish',
-    'hero.submit': 'Annotatsiyalarni topshirish',
+    'hero.submit': 'Nashr topshirish',
     
     // Asosiy raqamlar
     'stats.participants': 'Ishtirokchilar',
@@ -310,7 +310,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Sana
     'dates.title': 'Muhim sanalar',
-    'dates.abstract': 'Annotatsiya topshirish muddati',
+    'dates.abstract': 'Nashr topshirish muddati',
     'dates.registration': 'Roʻyxatdan oʻtish muddati',
     'dates.event': 'Tadbir sanalari',
     
@@ -324,8 +324,8 @@ const translations: Record<Language, TranslationStrings> = {
     'organizers.title': 'Tashkilotchilar',
     'org.0': 'Oʻzbekiston Respublikasi Sogʻliqni Saqlash Vazirligi',
     'org.1': 'Ruhiy salomatlik boʻyicha Respublika ixtisoslashgan ilmiy-amaliy tibbiyot markazi',
-    'org.2': 'Toshkent Davlat Tibbiyot Universiteti',
-    'org.3': 'Samarqand Davlat Tibbiyot Universiteti',
+    'org.2': 'Samarqand Davlat Tibbiyot Universiteti',
+    'org.3': 'Toshkent Davlat Tibbiyot Universiteti',
     'org.4': 'Jahon psixiatriya assotsiatsiyasi',
     'org.5': 'Oʻzbekiston psixiatrlari assotsiatsiyasi',
     
