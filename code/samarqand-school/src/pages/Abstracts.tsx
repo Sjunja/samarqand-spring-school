@@ -161,7 +161,7 @@ export default function Abstracts() {
                       <Link to="/login" className="text-primary-600 hover:text-primary-700 font-semibold underline">
                         личный кабинет
                       </Link>
-                      .
+                      {' '}после регистрации/входа.
                     </>
                   )
                   : language === 'uz'
@@ -171,7 +171,7 @@ export default function Abstracts() {
                       <Link to="/login" className="text-primary-600 hover:text-primary-700 font-semibold underline">
                         shaxsiy kabinet
                       </Link>
-                      {' '}orqali topshiriladi.
+                      {' '}orqali roʻyxatdan oʻtish/kirishdan soʻng topshiriladi.
                     </>
                   )
                   : (
@@ -180,7 +180,7 @@ export default function Abstracts() {
                       <Link to="/login" className="text-primary-600 hover:text-primary-700 font-semibold underline">
                         personal cabinet
                       </Link>
-                      .
+                      {' '}after registration/sign-in.
                     </>
                   )}
               </p>
