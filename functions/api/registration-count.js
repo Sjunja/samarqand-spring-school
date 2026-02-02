@@ -21,7 +21,12 @@ var onRequest = async ({ request, env }) => {
     return new Response("Method Not Allowed", { status: 405, headers: corsHeaders });
   }
   try {
-    const result = await env.DB.prepare("select count(*) as count from registrations").first();
+    const result = await env.DB.prepare(`
+      select count(distinct r.id) as count
+      from registrations r
+      inner join payments p on r.id = p.registration_id
+      where p.status = 'confirmed'
+    `).first();
     const count = typeof result?.count === "number" ? result.count : Number(result?.count ?? 0);
     return jsonResponse({ count });
   } catch (error) {
