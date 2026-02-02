@@ -28,7 +28,13 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
   }
 
   try {
-    const result = await env.DB.prepare('select count(*) as count from registrations').first();
+    // Count only registrations with confirmed payments (approved participants)
+    const result = await env.DB.prepare(`
+      select count(distinct r.id) as count
+      from registrations r
+      inner join payments p on r.id = p.registration_id
+      where p.status = 'confirmed'
+    `).first();
     const count = typeof result?.count === 'number' ? result.count : Number(result?.count ?? 0);
     return jsonResponse({ count });
   } catch (error) {
