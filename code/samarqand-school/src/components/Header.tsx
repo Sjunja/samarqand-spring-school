@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe } from 'lucide-react';
 import { useI18n, getLogoPath, Language } from '../lib/i18n';
-import { getCurrentUser, type AuthUser } from '../lib/backend';
+import { useAuth } from '../contexts/AuthContext';
 
 const navItems = [
   { key: 'nav.home', path: '/' },
@@ -18,9 +18,9 @@ const navItems = [
 
 export default function Header() {
   const { language, setLanguage, t } = useI18n();
+  const { user } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState<AuthUser | null>(null);
   const location = useLocation();
 
   const languages: { code: Language; name: string }[] = [
@@ -28,10 +28,6 @@ export default function Header() {
     { code: 'ru', name: 'Русский' },
     { code: 'uz', name: 'O\'zbek' },
   ];
-
-  useEffect(() => {
-    getCurrentUser().then(setCurrentUser);
-  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-nav">
@@ -61,7 +57,7 @@ export default function Header() {
                 {t(item.key)}
               </Link>
             ))}
-            {currentUser?.role === 'admin' && (
+            {user?.role === 'admin' && (
               <Link
                 to="/admin"
                 className={`text-sm font-medium transition-colors duration-200 ${
@@ -143,7 +139,7 @@ export default function Header() {
                 {t(item.key)}
               </Link>
             ))}
-            {currentUser?.role === 'admin' && (
+            {user?.role === 'admin' && (
               <Link
                 to="/admin"
                 onClick={() => setMobileMenuOpen(false)}

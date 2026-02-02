@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { I18nProvider } from './lib/i18n';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -20,30 +21,32 @@ import Invoice from './pages/Invoice';
 function App() {
   return (
     <I18nProvider>
-      <BrowserRouter>
-        <div className="min-h-screen flex flex-col bg-white">
-          <Header />
-          <div className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/program" element={<Program />} />
-              <Route path="/registration" element={<Registration />} />
-              <Route path="/abstracts" element={<Abstracts />} />
-              <Route path="/venue" element={<Venue />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/developer" element={<DeveloperDashboard />} />
-              <Route path="/invoice/:id" element={<Invoice />} />
-            </Routes>
+      <AuthProvider>
+        <BrowserRouter>
+          <div className="min-h-screen flex flex-col bg-white">
+            <Header />
+            <div className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/program" element={<Program />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/abstracts" element={<Abstracts />} />
+                <Route path="/venue" element={<Venue />} />
+                <Route path="/news" element={<News />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/developer" element={<DeveloperDashboard />} />
+                <Route path="/invoice/:id" element={<Invoice />} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AuthProvider>
     </I18nProvider>
   );
 }

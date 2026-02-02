@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../lib/i18n';
 import { login } from '../lib/backend';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function AdminLogin() {
   const { language } = useI18n();
+  const { refreshUser } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,12 +27,13 @@ export default function AdminLogin() {
 
     const result = await login(email, password, 'admin');
     if (result?.success) {
+      await refreshUser(); // Обновляем глобальный контекст авторизации
       navigate('/admin');
     } else {
       setError(language === 'ru'
         ? 'Неверный email или пароль'
         : language === 'uz'
-        ? 'Email yoki parol noto‘g‘ri'
+        ? 'Email yoki parol notoʻgʻri'
         : 'Invalid email or password');
     }
     setLoading(false);

@@ -3,6 +3,7 @@ import { useI18n, type Language } from '../lib/i18n';
 import { submitRegistration, getRegistrationCount, isBackendConfigured } from '../lib/backend';
 import { AlertCircle, CheckCircle, Users, Clock, Check, Upload, X } from 'lucide-react';
 import PriceCalculator from '../components/PriceCalculator';
+import { useAuth } from '../contexts/AuthContext';
 
 const MAX_PARTICIPANTS = 100;
 const REGISTRATION_DEADLINE = '2026-03-01';
@@ -318,6 +319,7 @@ const bankDetails = {
 
 export default function Registration() {
   const { language, t } = useI18n();
+  const { refreshUser } = useAuth();
   const [slots, setSlots] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -635,6 +637,7 @@ export default function Registration() {
     const result = await submitRegistration(formData);
 
     if (result.success) {
+      await refreshUser(); // Обновляем глобальный контекст авторизации
       setSuccess(true);
       setFormData({
         name: '',
