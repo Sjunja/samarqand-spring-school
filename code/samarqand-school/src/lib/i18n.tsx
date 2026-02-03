@@ -296,7 +296,7 @@ const translations: Record<Language, TranslationStrings> = {
     
     // Qahramon
     'hero.title': 'III Yosh psixiatr va narkologlar bahorgi Samarqand maktabi',
-    'hero.subtitle': '',
+    'hero.subtitle': ' ',
     'hero.dates': '2026 yil 8-12 aprel',
     'hero.location': 'Samarqand, Oʻzbekiston',
     'hero.register': 'Roʻyxatdan oʻtish',
